@@ -12,6 +12,8 @@
 		D93813EA297B10E100A0A3DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D93813E8297B10E100A0A3DF /* Main.storyboard */; };
 		D93813EC297B10E500A0A3DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D93813EB297B10E500A0A3DF /* Assets.xcassets */; };
 		D93813EF297B10E500A0A3DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D93813ED297B10E500A0A3DF /* LaunchScreen.storyboard */; };
+		D93813F9297B12EB00A0A3DF /* MidiParser in Frameworks */ = {isa = PBXBuildFile; productRef = D93813F8297B12EB00A0A3DF /* MidiParser */; };
+		D93813FC297B13C600A0A3DF /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = D93813FB297B13C600A0A3DF /* AudioKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D93813FC297B13C600A0A3DF /* AudioKit in Frameworks */,
+				D93813F9297B12EB00A0A3DF /* MidiParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +86,10 @@
 			dependencies = (
 			);
 			name = LearnPiano;
+			packageProductDependencies = (
+				D93813F8297B12EB00A0A3DF /* MidiParser */,
+				D93813FB297B13C600A0A3DF /* AudioKit */,
+			);
 			productName = LearnPiano;
 			productReference = D93813DF297B10E100A0A3DF /* LearnPiano.app */;
 			productType = "com.apple.product-type.application";
@@ -110,6 +118,10 @@
 				Base,
 			);
 			mainGroup = D93813D6297B10E100A0A3DF;
+			packageReferences = (
+				D93813F7297B12EB00A0A3DF /* XCRemoteSwiftPackageReference "midiparser" */,
+				D93813FA297B13C600A0A3DF /* XCRemoteSwiftPackageReference "AudioKit" */,
+			);
 			productRefGroup = D93813E0297B10E100A0A3DF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -360,6 +372,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D93813F7297B12EB00A0A3DF /* XCRemoteSwiftPackageReference "midiparser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://gitlab.com/oktrus/midiparser.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		D93813FA297B13C600A0A3DF /* XCRemoteSwiftPackageReference "AudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D93813F8297B12EB00A0A3DF /* MidiParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D93813F7297B12EB00A0A3DF /* XCRemoteSwiftPackageReference "midiparser" */;
+			productName = MidiParser;
+		};
+		D93813FB297B13C600A0A3DF /* AudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D93813FA297B13C600A0A3DF /* XCRemoteSwiftPackageReference "AudioKit" */;
+			productName = AudioKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D93813D7297B10E100A0A3DF /* Project object */;
 }

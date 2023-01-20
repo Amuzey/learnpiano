@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "audiokit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AudioKit/AudioKit.git",
+      "state" : {
+        "revision" : "af392ad3c01a89d1602e8a74b8876c0b76cd4134",
+        "version" : "5.5.8"
+      }
+    },
+    {
+      "identity" : "midiparser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://gitlab.com/oktrus/midiparser.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "d0c2b731c504d93eb948345e3c2ba5cc929a8657"
+      }
+    }
+  ],
+  "version" : 2
+}
