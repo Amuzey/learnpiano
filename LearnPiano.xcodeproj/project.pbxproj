@@ -61,9 +61,10 @@
 		D93813E1297B10E100A0A3DF /* LearnPiano */ = {
 			isa = PBXGroup;
 			children = (
+				D9381400297B15F600A0A3DF /* Services */,
+				D93813FF297B15E600A0A3DF /* Modules */,
 				D93813F6297B10FB00A0A3DF /* LearnPiano.entitlements */,
 				D93813E2297B10E100A0A3DF /* AppDelegate.swift */,
-				D93813E6297B10E100A0A3DF /* ViewController.swift */,
 				D93813FD297B155300A0A3DF /* SceneDelegate.swift */,
 				D93813E8297B10E100A0A3DF /* Main.storyboard */,
 				D93813EB297B10E500A0A3DF /* Assets.xcassets */,
@@ -71,6 +72,21 @@
 				D93813F0297B10E500A0A3DF /* Info.plist */,
 			);
 			path = LearnPiano;
+			sourceTree = "<group>";
+		};
+		D93813FF297B15E600A0A3DF /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				D93813E6297B10E100A0A3DF /* ViewController.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		D9381400297B15F600A0A3DF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
