@@ -14,6 +14,7 @@
 		D93813EF297B10E500A0A3DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D93813ED297B10E500A0A3DF /* LaunchScreen.storyboard */; };
 		D93813F9297B12EB00A0A3DF /* MidiParser in Frameworks */ = {isa = PBXBuildFile; productRef = D93813F8297B12EB00A0A3DF /* MidiParser */; };
 		D93813FC297B13C600A0A3DF /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = D93813FB297B13C600A0A3DF /* AudioKit */; };
+		D93813FE297B155300A0A3DF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93813FD297B155300A0A3DF /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		D93813EE297B10E500A0A3DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D93813F0297B10E500A0A3DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D93813F6297B10FB00A0A3DF /* LearnPiano.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LearnPiano.entitlements; sourceTree = "<group>"; };
+		D93813FD297B155300A0A3DF /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				D93813F6297B10FB00A0A3DF /* LearnPiano.entitlements */,
 				D93813E2297B10E100A0A3DF /* AppDelegate.swift */,
 				D93813E6297B10E100A0A3DF /* ViewController.swift */,
+				D93813FD297B155300A0A3DF /* SceneDelegate.swift */,
 				D93813E8297B10E100A0A3DF /* Main.storyboard */,
 				D93813EB297B10E500A0A3DF /* Assets.xcassets */,
 				D93813ED297B10E500A0A3DF /* LaunchScreen.storyboard */,
@@ -151,6 +154,7 @@
 			files = (
 				D93813E7297B10E100A0A3DF /* ViewController.swift in Sources */,
 				D93813E3297B10E100A0A3DF /* AppDelegate.swift in Sources */,
+				D93813FE297B155300A0A3DF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
