@@ -20,14 +20,6 @@ class VisualAssistans: UIView {
         super.init(frame: frame)
         backgroundColor = .white
         startTimer()
-        
-        for note in track {
-            print("\(note)\n")
-        }
-        print(track[1])
-        print(track[2])
-        print(track[50])
-        print(track[80])
     }
     
     required init?(coder: NSCoder) {
@@ -38,18 +30,17 @@ class VisualAssistans: UIView {
     override func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         for note in track {
-            let center = CGPoint(x: (Int(note.note) * 15) - 500, y: Int(note.timeStamp.inTicks.value)/20)
-            let radius = 5.0
+            let center = CGPoint(x: (Int(note.note) * 15) - 500, y: Int(bounds.height - CGFloat(note.timeStamp.inTicks.value) / 5))
             let circleColor = UIColor.black.cgColor
-            drawCircle(context: context, center: center, radius: radius, color: circleColor)
+            drawRect(context: context, center: center, height: CGFloat(note.duration.inTicks.value - 140), color: circleColor)
         }
     }
     
     //MARK: Private func
-    private func drawCircle(context: CGContext, center: CGPoint, radius: CGFloat, color: CGColor) {
+    private func drawRect(context: CGContext, center: CGPoint, height: CGFloat, color: CGColor) {
         context.setFillColor(color)
         context.beginPath()
-        context.addArc(center: center, radius: radius, startAngle: 0, endAngle: CGFloat(Double.pi * 2), clockwise: true)
+        context.addRect(CGRect(x: center.x, y: center.y, width: self.bounds.width / 88, height: height))
         context.closePath()
         context.fillPath()
     }
