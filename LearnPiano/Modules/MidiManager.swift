@@ -10,6 +10,7 @@ import MidiParser
 
 class MidiManager {
     var midi = MidiData()
+//    let conductor = MIDIMonitorConductor()
     
     init() {
         guard let midiFilePath = Bundle.main.path(forResource: "левая рука.", ofType: "mid") else {
@@ -19,5 +20,6 @@ class MidiManager {
             fatalError("Failed to load MIDI file data")
         }
         midi.load(data: data)
+        
     }
 }

@@ -12,13 +12,13 @@ import AudioKit
 
 class SecondViewController: UIViewController {
     
-   // private let conductor = MIDIMonitorConductor()
-    
-    private let midi = MidiManager()
+//    private let conductor = MIDIMonitorConductor()
+    private let visualAssistans = VisualAssistans()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(">>>")
+        view = visualAssistans
         // Do any additional setup after loading the view.
     }
 
