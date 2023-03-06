@@ -8,12 +8,13 @@
 import Foundation
 import MidiParser
 
-class MidiManager {
-    var midi = MidiData()
-//    let conductor = MIDIMonitorConductor()
+class MidiParser {
+    let midiName: String
+    let midi = MidiData()
     
-    init() {
-        guard let midiFilePath = Bundle.main.path(forResource: "левая рука.", ofType: "mid") else {
+    init(midiName: String) {
+        self.midiName = midiName
+        guard let midiFilePath = Bundle.main.path(forResource: midiName, ofType: "mid") else {
             fatalError("MIDI file not found in bundle")
         }
         guard let data = try? Data(contentsOf: URL(fileURLWithPath: midiFilePath)) else {
