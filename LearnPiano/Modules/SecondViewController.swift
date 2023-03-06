@@ -1,14 +1,16 @@
 //
-//  ViewController.swift
+//  SecondViewController.swift
 //  LearnPiano
 //
-//  Created by Alexey Nikiforov on 20.01.2023.
+//  Created by Алексей on 06.03.2023.
 //
+
+import Foundation
 
 import UIKit
 import AudioKit
 
-class ViewController: UIViewController {
+class SecondViewController: UIViewController {
     
    // private let conductor = MIDIMonitorConductor()
     
@@ -22,4 +24,3 @@ class ViewController: UIViewController {
 
 
 }
-
