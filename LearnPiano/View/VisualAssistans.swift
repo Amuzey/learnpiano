@@ -35,14 +35,14 @@ class VisualAssistans: UIView {
     override func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         for note in trackRight {
-            let centerX = (Int(bounds.width) / 88) * Int(note.note)
+            let centerX = (Int(bounds.width) / 87) * Int(note.note)
             let centerY = Int(bounds.height - CGFloat(note.timeStamp.inTicks.value) / 5)
             let center = CGPoint(x: centerX, y: centerY + Int(yOffset))
             let rightColor = UIColor.systemGreen.cgColor
             drawRect(context: context, center: center, height: CGFloat(note.duration.inTicks.value / 8), color: rightColor)
         }
         for note in trackLeft {
-            let centerX = (Int(bounds.width) / 88) * Int(note.note)
+            let centerX = (Int(bounds.width) / 87) * Int(note.note)
             let centerY = Int(bounds.height - CGFloat(note.timeStamp.inTicks.value) / 5)
             let center = CGPoint(x: centerX, y: centerY + Int(yOffset))
             let leftColor = UIColor.systemBlue.cgColor
@@ -54,7 +54,7 @@ class VisualAssistans: UIView {
     private func drawRect(context: CGContext, center: CGPoint, height: CGFloat, color: CGColor) {
         context.setFillColor(color)
         context.beginPath()
-        context.addRect(CGRect(x: center.x, y: center.y, width: self.bounds.width / 88, height: height))
+        context.addRect(CGRect(x: center.x, y: center.y, width: self.bounds.width / 87, height: height))
         context.closePath()
         context.fillPath()
     }

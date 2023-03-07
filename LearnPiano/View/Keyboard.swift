@@ -16,7 +16,7 @@ final class Keyboard: UIView {
     private let conductor = MIDIMonitorConductor()
     var targetAction: [TargetAction] = []
     let height: CGFloat = 100
-    let width = (UIScreen.main.bounds.width - 98) / 50
+    let width = (UIScreen.main.bounds.width - 200) / 51
     
     override init(frame: CGRect) {
         super.init(frame: frame)
