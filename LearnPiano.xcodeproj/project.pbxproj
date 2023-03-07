@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A7C70B129B5A59A0068178D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C70B029B5A59A0068178D /* SecondViewController.swift */; };
 		8A7C70B329B5A5B80068178D /* MidiParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C70B229B5A5B80068178D /* MidiParser.swift */; };
 		8A7C70B929B5BDBA0068178D /* MIDIMonitorConductor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C70B829B5BDBA0068178D /* MIDIMonitorConductor.swift */; };
 		8A7C70BB29B5BDE90068178D /* MIDIMonitorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C70BA29B5BDE90068178D /* MIDIMonitorData.swift */; };
@@ -18,6 +17,9 @@
 		8A7C70C829B60EE00068178D /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C70C729B60EE00068178D /* Keyboard.swift */; };
 		8A7C70CB29B628990068178D /* ButtonTapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C70CA29B628990068178D /* ButtonTapped.swift */; };
 		8A7C70CE29B628D70068178D /* ButtonAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C70CD29B628D70068178D /* ButtonAnimation.swift */; };
+		8A7C70DA29B703340068178D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8A7C70D929B703340068178D /* SnapKit */; };
+		8A7C70E029B706940068178D /* sonata_dlya_fortepiano_14_-_lunnaya_sonata.midi in Resources */ = {isa = PBXBuildFile; fileRef = 8A7C70DF29B706940068178D /* sonata_dlya_fortepiano_14_-_lunnaya_sonata.midi */; };
+		8A7C70E229B709770068178D /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 8A7C70E129B709760068178D /* Sounds */; };
 		D93813E3297B10E100A0A3DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93813E2297B10E100A0A3DF /* AppDelegate.swift */; };
 		D93813E7297B10E100A0A3DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93813E6297B10E100A0A3DF /* ViewController.swift */; };
 		D93813EA297B10E100A0A3DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D93813E8297B10E100A0A3DF /* Main.storyboard */; };
@@ -29,7 +31,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8A7C70B029B5A59A0068178D /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		8A7C70B229B5A5B80068178D /* MidiParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MidiParser.swift; path = LearnPiano/Modules/MidiParser.swift; sourceTree = SOURCE_ROOT; };
 		8A7C70B829B5BDBA0068178D /* MIDIMonitorConductor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIMonitorConductor.swift; sourceTree = "<group>"; };
 		8A7C70BA29B5BDE90068178D /* MIDIMonitorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIMonitorData.swift; sourceTree = "<group>"; };
@@ -40,6 +41,8 @@
 		8A7C70C729B60EE00068178D /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		8A7C70CA29B628990068178D /* ButtonTapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTapped.swift; sourceTree = "<group>"; };
 		8A7C70CD29B628D70068178D /* ButtonAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAnimation.swift; sourceTree = "<group>"; };
+		8A7C70DF29B706940068178D /* sonata_dlya_fortepiano_14_-_lunnaya_sonata.midi */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "sonata_dlya_fortepiano_14_-_lunnaya_sonata.midi"; sourceTree = "<group>"; };
+		8A7C70E129B709760068178D /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		D93813DF297B10E100A0A3DF /* LearnPiano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearnPiano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93813E2297B10E100A0A3DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D93813E6297B10E100A0A3DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A7C70DA29B703340068178D /* SnapKit in Frameworks */,
 				D93813FC297B13C600A0A3DF /* AudioKit in Frameworks */,
 				D93813F9297B12EB00A0A3DF /* MidiParser in Frameworks */,
 			);
@@ -67,6 +71,7 @@
 		8A7C70B629B5A6060068178D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8A7C70DF29B706940068178D /* sonata_dlya_fortepiano_14_-_lunnaya_sonata.midi */,
 				8A7C70C329B60E790068178D /* leftHand.mid */,
 				8A7C70C529B60E840068178D /* rightHand.mid */,
 			);
@@ -127,6 +132,7 @@
 		D93813E1297B10E100A0A3DF /* LearnPiano */ = {
 			isa = PBXGroup;
 			children = (
+				8A7C70E129B709760068178D /* Sounds */,
 				8A7C70CC29B628BF0068178D /* ButtonExtension */,
 				8A7C70C929B628740068178D /* ButtonAction */,
 				D9381400297B15F600A0A3DF /* Services */,
@@ -148,7 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				D93813E6297B10E100A0A3DF /* ViewController.swift */,
-				8A7C70B029B5A59A0068178D /* SecondViewController.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 			packageProductDependencies = (
 				D93813F8297B12EB00A0A3DF /* MidiParser */,
 				D93813FB297B13C600A0A3DF /* AudioKit */,
+				8A7C70D929B703340068178D /* SnapKit */,
 			);
 			productName = LearnPiano;
 			productReference = D93813DF297B10E100A0A3DF /* LearnPiano.app */;
@@ -213,6 +219,7 @@
 			packageReferences = (
 				D93813F7297B12EB00A0A3DF /* XCRemoteSwiftPackageReference "midiparser" */,
 				D93813FA297B13C600A0A3DF /* XCRemoteSwiftPackageReference "AudioKit" */,
+				8A7C70D829B703340068178D /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = D93813E0297B10E100A0A3DF /* Products */;
 			projectDirPath = "";
@@ -231,8 +238,10 @@
 				D93813EF297B10E500A0A3DF /* LaunchScreen.storyboard in Resources */,
 				8A7C70C629B60E840068178D /* rightHand.mid in Resources */,
 				D93813EC297B10E500A0A3DF /* Assets.xcassets in Resources */,
+				8A7C70E029B706940068178D /* sonata_dlya_fortepiano_14_-_lunnaya_sonata.midi in Resources */,
 				8A7C70C429B60E790068178D /* leftHand.mid in Resources */,
 				D93813EA297B10E100A0A3DF /* Main.storyboard in Resources */,
+				8A7C70E229B709770068178D /* Sounds in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,7 +253,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A7C70C829B60EE00068178D /* Keyboard.swift in Sources */,
-				8A7C70B129B5A59A0068178D /* SecondViewController.swift in Sources */,
 				8A7C70CB29B628990068178D /* ButtonTapped.swift in Sources */,
 				8A7C70BB29B5BDE90068178D /* MIDIMonitorData.swift in Sources */,
 				8A7C70C029B5C2C50068178D /* VisualAssistans.swift in Sources */,
@@ -478,6 +486,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8A7C70D829B703340068178D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		D93813F7297B12EB00A0A3DF /* XCRemoteSwiftPackageReference "midiparser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://gitlab.com/oktrus/midiparser.git";
@@ -497,6 +513,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8A7C70D929B703340068178D /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A7C70D829B703340068178D /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		D93813F8297B12EB00A0A3DF /* MidiParser */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D93813F7297B12EB00A0A3DF /* XCRemoteSwiftPackageReference "midiparser" */;

@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AudioKit/AudioKit.git",
       "state" : {
-        "revision" : "af392ad3c01a89d1602e8a74b8876c0b76cd4134",
-        "version" : "5.5.8"
+        "revision" : "ca4dae8383dfe3f2ad11633644e1d2c3ea45d183",
+        "version" : "5.6.0"
       }
     },
     {
@@ -16,6 +16,15 @@
       "state" : {
         "branch" : "master",
         "revision" : "d0c2b731c504d93eb948345e3c2ba5cc929a8657"
+      }
+    },
+    {
+      "identity" : "snapkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SnapKit/SnapKit.git",
+      "state" : {
+        "revision" : "f222cbdf325885926566172f6f5f06af95473158",
+        "version" : "5.6.0"
       }
     }
   ],

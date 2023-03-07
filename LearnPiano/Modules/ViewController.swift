@@ -11,21 +11,21 @@ import SnapKit
 
 class ViewController: UIViewController {
     
-    //    private let conductor = MIDIMonitorConductor()
-    
+    //MARK: - Private properties
     private let visualAssistans = VisualAssistans()
     private let keyboard = Keyboard()
     
+    //MARK: - Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         print(">>>")
-        view.addSubview(visualAssistans)
-        view.addSubview(keyboard)
-        setupViewAssistans()
         setupKeyBoard()
+        setupViewAssistans()
     }
     
+    //MARK: - Private methods
     private func setupKeyBoard() {
+        view.addSubview(keyboard)
         keyboard.backgroundColor = .lightGray
         keyboard.snp.makeConstraints { make in
             make.leading.equalToSuperview()
@@ -36,6 +36,7 @@ class ViewController: UIViewController {
     }
     
     private func setupViewAssistans() {
+        view.addSubview(visualAssistans)
         visualAssistans.backgroundColor = .darkGray
         visualAssistans.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()

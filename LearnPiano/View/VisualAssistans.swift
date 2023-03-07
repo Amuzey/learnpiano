@@ -11,7 +11,7 @@ class VisualAssistans: UIView {
     
     //MARK: - Private properties
     private let midiLeft = MidiParser(midiName: "leftHand")
-    private var midiRight = MidiParser(midiName: "rightHand")
+    private let midiRight = MidiParser(midiName: "rightHand")
     private var timer: Timer?
     private var yOffset: CGFloat = 0
     private lazy var trackLeft = midiLeft.midi.noteTracks[1]
@@ -20,6 +20,8 @@ class VisualAssistans: UIView {
     //MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        print(trackRight[0].note)
         
         backgroundColor = .white
         startTimer()
