@@ -5,14 +5,13 @@
 //  Created by Алексей on 06.03.2023.
 //
 
-import Foundation
-
 import UIKit
 import AudioKit
 import SnapKit
 
-final class Keyboard: UIView {
+class Keyboard: UIView {
     
+    private var keyboardSheme = KeyboardSheme.shared
     private let conductor = MIDIMonitorConductor()
     var targetAction: [TargetAction] = []
     let height: CGFloat = 100
@@ -33,7 +32,6 @@ final class Keyboard: UIView {
         
         var counter = 21
         for number in 0..<51 {
-
             let whiteButton = UIButton()
             whiteButton.backgroundColor = .white
             addSubview(whiteButton)
@@ -52,7 +50,6 @@ final class Keyboard: UIView {
             for i in 0...7 {
                 mas.append(contentsOf: [2 + 7 * i, 3 + 7 * i, 5 + 7 * i, 6 + 7 * i, 7 + 7 * i])
             }
-            
             if mas.contains(number) {
                 let blackButton = UIButton()
                 addSubview(blackButton)
@@ -84,6 +81,7 @@ final class Keyboard: UIView {
                 buttons[note]?.backgroundColor = .white
             }
         }
+        keyboardSheme.addButtons(buttons: blackBtn)
     }
     
     private func createButtons(button: UIButton, number: Int) {

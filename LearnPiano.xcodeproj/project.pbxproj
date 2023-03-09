@@ -20,6 +20,10 @@
 		8A7C70DA29B703340068178D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8A7C70D929B703340068178D /* SnapKit */; };
 		8A7C70E029B706940068178D /* sonata_dlya_fortepiano_14_-_lunnaya_sonata.midi in Resources */ = {isa = PBXBuildFile; fileRef = 8A7C70DF29B706940068178D /* sonata_dlya_fortepiano_14_-_lunnaya_sonata.midi */; };
 		8A7C70E229B709770068178D /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 8A7C70E129B709760068178D /* Sounds */; };
+		8A7C70E429B757520068178D /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C70E329B757520068178D /* SoundPlayer.swift */; };
+		8A7C70E629B7577B0068178D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C70E529B7577B0068178D /* SecondViewController.swift */; };
+		8A7C70E829B757A40068178D /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C70E729B757A40068178D /* NotesView.swift */; };
+		8A7C710E29B850420068178D /* KeyboardSheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C710D29B850420068178D /* KeyboardSheme.swift */; };
 		D93813E3297B10E100A0A3DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93813E2297B10E100A0A3DF /* AppDelegate.swift */; };
 		D93813E7297B10E100A0A3DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93813E6297B10E100A0A3DF /* ViewController.swift */; };
 		D93813EA297B10E100A0A3DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D93813E8297B10E100A0A3DF /* Main.storyboard */; };
@@ -43,6 +47,10 @@
 		8A7C70CD29B628D70068178D /* ButtonAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAnimation.swift; sourceTree = "<group>"; };
 		8A7C70DF29B706940068178D /* sonata_dlya_fortepiano_14_-_lunnaya_sonata.midi */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "sonata_dlya_fortepiano_14_-_lunnaya_sonata.midi"; sourceTree = "<group>"; };
 		8A7C70E129B709760068178D /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
+		8A7C70E329B757520068178D /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		8A7C70E529B7577B0068178D /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		8A7C70E729B757A40068178D /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
+		8A7C710D29B850420068178D /* KeyboardSheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSheme.swift; sourceTree = "<group>"; };
 		D93813DF297B10E100A0A3DF /* LearnPiano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearnPiano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93813E2297B10E100A0A3DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D93813E6297B10E100A0A3DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +101,8 @@
 			children = (
 				8A7C70BF29B5C2C50068178D /* VisualAssistans.swift */,
 				8A7C70C729B60EE00068178D /* Keyboard.swift */,
+				8A7C70E329B757520068178D /* SoundPlayer.swift */,
+				8A7C710D29B850420068178D /* KeyboardSheme.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -154,6 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				D93813E6297B10E100A0A3DF /* ViewController.swift */,
+				8A7C70E529B7577B0068178D /* SecondViewController.swift */,
+				8A7C70E729B757A40068178D /* NotesView.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -252,16 +264,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A7C70E829B757A40068178D /* NotesView.swift in Sources */,
 				8A7C70C829B60EE00068178D /* Keyboard.swift in Sources */,
+				8A7C710E29B850420068178D /* KeyboardSheme.swift in Sources */,
 				8A7C70CB29B628990068178D /* ButtonTapped.swift in Sources */,
 				8A7C70BB29B5BDE90068178D /* MIDIMonitorData.swift in Sources */,
 				8A7C70C029B5C2C50068178D /* VisualAssistans.swift in Sources */,
 				8A7C70B929B5BDBA0068178D /* MIDIMonitorConductor.swift in Sources */,
 				D93813E7297B10E100A0A3DF /* ViewController.swift in Sources */,
+				8A7C70E629B7577B0068178D /* SecondViewController.swift in Sources */,
 				D93813E3297B10E100A0A3DF /* AppDelegate.swift in Sources */,
 				8A7C70CE29B628D70068178D /* ButtonAnimation.swift in Sources */,
 				8A7C70B329B5A5B80068178D /* MidiParser.swift in Sources */,
 				D93813FE297B155300A0A3DF /* SceneDelegate.swift in Sources */,
+				8A7C70E429B757520068178D /* SoundPlayer.swift in Sources */,
 				8A7C70BD29B5BE100068178D /* MIDIMonitorConductorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

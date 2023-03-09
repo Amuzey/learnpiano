@@ -12,8 +12,8 @@ import SnapKit
 class ViewController: UIViewController {
     
     //MARK: - Private properties
-    private let visualAssistans = VisualAssistans()
     private let keyboard = Keyboard()
+    private let visualAssistans = VisualAssistans()
     
     //MARK: - Life cycles
     override func viewDidLoad() {
@@ -39,7 +39,8 @@ class ViewController: UIViewController {
         view.addSubview(visualAssistans)
         visualAssistans.backgroundColor = .darkGray
         visualAssistans.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
             make.bottom.equalTo(keyboard.snp_topMargin)
             make.height.equalTo(view.bounds.height / 3)
         }
