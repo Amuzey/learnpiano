@@ -16,4 +16,8 @@ class KeyboardSheme {
     func saveButtons(buttons: [KeyboardButton]) {
         self.buttons = buttons
     }
+    
+    func klick(note: Int) {
+        buttons[note].klick?.toggle()
+    }
 }

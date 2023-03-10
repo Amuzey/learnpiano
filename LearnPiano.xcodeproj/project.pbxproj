@@ -126,6 +126,14 @@
 			path = ButtonExtension;
 			sourceTree = "<group>";
 		};
+		8A8AAE1129BB393B00BA98F9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8A8AAE0F29BB07D000BA98F9 /* KeyboardButton.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D93813D6297B10E100A0A3DF = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +153,7 @@
 		D93813E1297B10E100A0A3DF /* LearnPiano */ = {
 			isa = PBXGroup;
 			children = (
+				8A8AAE1129BB393B00BA98F9 /* Model */,
 				8A7C70CC29B628BF0068178D /* ButtonExtension */,
 				8A7C70C929B628740068178D /* ButtonAction */,
 				D9381400297B15F600A0A3DF /* Services */,
@@ -174,7 +183,6 @@
 		D9381400297B15F600A0A3DF /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				8A8AAE0F29BB07D000BA98F9 /* KeyboardButton.swift */,
 				8A7C710D29B850420068178D /* KeyboardSheme.swift */,
 				8A7C70B729B5BBBA0068178D /* MIDI */,
 				8A7C70B229B5A5B80068178D /* MidiParser.swift */,

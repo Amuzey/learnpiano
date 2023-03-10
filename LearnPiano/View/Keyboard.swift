@@ -104,6 +104,7 @@ class Keyboard: UIView {
             if self.conductor.playing {
                 button.backgroundColor = .red
                 self.conductor.instrument.stop(noteNumber: MIDINoteNumber(number), channel: 0)
+                self.keyboardSheme.klick(note: number)
             }
         }
         
@@ -118,6 +119,7 @@ class Keyboard: UIView {
             button.backgroundColor = btnColor
             try? self.conductor.engine.start()
             self.conductor.instrument.play(noteNumber: MIDINoteNumber(number), velocity: 70, channel: 0)
+            self.keyboardSheme.klick(note: number)
             print(">>>> ", number)
         }
         

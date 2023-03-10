@@ -11,6 +11,7 @@ class KeyboardButton {
     let number: Int
     let frame: CGRect
     var button: UIButton
+    var klick: Bool? = false
     
     init(number: Int, frame: CGRect, button: UIButton) {
         self.number = number

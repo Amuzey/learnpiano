@@ -36,16 +36,26 @@ class VisualAssistans: UIView {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         for note in trackRight {
             let center = getCenter(note: note)
-            drawRect(context: context, center: center, height: CGFloat(note.duration.inTicks.value / 8), color: UIColor.systemGreen.cgColor)
+            let color = setColor(note: note)
+            drawRect(context: context, center: center, height: CGFloat(note.duration.inTicks.value / 8), color: color)
         }
         for note in trackLeft {
             let center = getCenter(note: note)
-            drawRect(context: context, center: center, height: CGFloat(note.duration.inTicks.value / 8), color: UIColor.systemBlue.cgColor)
+            let color = setColor(note: note)
+            drawRect(context: context, center: center, height: CGFloat(note.duration.inTicks.value / 8), color: color)
         }
     }
     
     //MARK: Private func
-   private func getCenter(note: MidiNoteTrack.Element) -> CGPoint {
+    private func setColor(note: MidiNoteTrack.Element) -> CGColor {
+        if keyboardSheme.buttons[Int(note.note)].klick ?? false {
+            return UIColor.systemGreen.cgColor
+        } else {
+            return UIColor.systemYellow.cgColor
+        }
+    }
+    
+    private func getCenter(note: MidiNoteTrack.Element) -> CGPoint {
         let centerX = (keyboardSheme.buttons[Int(note.note) - 21].frame.minX)
         let centerY = CGFloat(Int(bounds.height - CGFloat(note.timeStamp.inTicks.value) / 5))
         return CGPoint(x: centerX, y: centerY + yOffset)
