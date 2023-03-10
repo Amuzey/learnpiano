@@ -11,9 +11,9 @@ class KeyboardSheme {
 
     static let shared = KeyboardSheme()
     
-    var blackButtons: [Int] = []
+    var buttons: [KeyboardButton] = []
     
-    func addButtons(buttons: [Int]) {
-        self.blackButtons = buttons
+    func saveButtons(buttons: [KeyboardButton]) {
+        self.buttons = buttons
     }
 }

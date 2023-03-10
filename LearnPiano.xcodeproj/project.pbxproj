@@ -24,6 +24,7 @@
 		8A7C70E629B7577B0068178D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C70E529B7577B0068178D /* SecondViewController.swift */; };
 		8A7C70E829B757A40068178D /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C70E729B757A40068178D /* NotesView.swift */; };
 		8A7C710E29B850420068178D /* KeyboardSheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C710D29B850420068178D /* KeyboardSheme.swift */; };
+		8A8AAE1029BB07D000BA98F9 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8AAE0F29BB07D000BA98F9 /* KeyboardButton.swift */; };
 		D93813E3297B10E100A0A3DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93813E2297B10E100A0A3DF /* AppDelegate.swift */; };
 		D93813E7297B10E100A0A3DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93813E6297B10E100A0A3DF /* ViewController.swift */; };
 		D93813EA297B10E100A0A3DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D93813E8297B10E100A0A3DF /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 		8A7C70E529B7577B0068178D /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		8A7C70E729B757A40068178D /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		8A7C710D29B850420068178D /* KeyboardSheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSheme.swift; sourceTree = "<group>"; };
+		8A8AAE0F29BB07D000BA98F9 /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
 		D93813DF297B10E100A0A3DF /* LearnPiano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearnPiano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93813E2297B10E100A0A3DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D93813E6297B10E100A0A3DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 		8A7C70B629B5A6060068178D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8A7C70E129B709760068178D /* Sounds */,
 				8A7C70DF29B706940068178D /* sonata_dlya_fortepiano_14_-_lunnaya_sonata.midi */,
 				8A7C70C329B60E790068178D /* leftHand.mid */,
 				8A7C70C529B60E840068178D /* rightHand.mid */,
@@ -102,7 +105,7 @@
 				8A7C70BF29B5C2C50068178D /* VisualAssistans.swift */,
 				8A7C70C729B60EE00068178D /* Keyboard.swift */,
 				8A7C70E329B757520068178D /* SoundPlayer.swift */,
-				8A7C710D29B850420068178D /* KeyboardSheme.swift */,
+				8A7C70E729B757A40068178D /* NotesView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -142,7 +145,6 @@
 		D93813E1297B10E100A0A3DF /* LearnPiano */ = {
 			isa = PBXGroup;
 			children = (
-				8A7C70E129B709760068178D /* Sounds */,
 				8A7C70CC29B628BF0068178D /* ButtonExtension */,
 				8A7C70C929B628740068178D /* ButtonAction */,
 				D9381400297B15F600A0A3DF /* Services */,
@@ -165,7 +167,6 @@
 			children = (
 				D93813E6297B10E100A0A3DF /* ViewController.swift */,
 				8A7C70E529B7577B0068178D /* SecondViewController.swift */,
-				8A7C70E729B757A40068178D /* NotesView.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -173,6 +174,8 @@
 		D9381400297B15F600A0A3DF /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8A8AAE0F29BB07D000BA98F9 /* KeyboardButton.swift */,
+				8A7C710D29B850420068178D /* KeyboardSheme.swift */,
 				8A7C70B729B5BBBA0068178D /* MIDI */,
 				8A7C70B229B5A5B80068178D /* MidiParser.swift */,
 			);
@@ -272,6 +275,7 @@
 				8A7C70C029B5C2C50068178D /* VisualAssistans.swift in Sources */,
 				8A7C70B929B5BDBA0068178D /* MIDIMonitorConductor.swift in Sources */,
 				D93813E7297B10E100A0A3DF /* ViewController.swift in Sources */,
+				8A8AAE1029BB07D000BA98F9 /* KeyboardButton.swift in Sources */,
 				8A7C70E629B7577B0068178D /* SecondViewController.swift in Sources */,
 				D93813E3297B10E100A0A3DF /* AppDelegate.swift in Sources */,
 				8A7C70CE29B628D70068178D /* ButtonAnimation.swift in Sources */,

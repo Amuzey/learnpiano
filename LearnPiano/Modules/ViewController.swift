@@ -21,6 +21,7 @@ class ViewController: UIViewController {
         print(">>>")
         setupKeyBoard()
         setupViewAssistans()
+        
     }
     
     //MARK: - Private methods

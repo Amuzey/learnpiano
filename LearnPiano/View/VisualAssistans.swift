@@ -11,7 +11,6 @@ import MidiParser
 class VisualAssistans: UIView {
     
     //MARK: - Private properties
-    
     private let keyboardSheme = KeyboardSheme.shared
     private let midiLeft = MidiParser(midiName: "leftHand")
     private let midiRight = MidiParser(midiName: "rightHand")
@@ -45,21 +44,13 @@ class VisualAssistans: UIView {
         }
     }
     
-    func getCenter(note: MidiNoteTrack.Element) -> CGPoint {
-        var centerX: CGFloat = 0
-        var centerY: CGFloat = 0
-        if keyboardSheme.blackButtons.contains(Int(note.note)) {
-            centerX = (width + 4) * CGFloat(note.note - 21) + width / 2
-            centerY = CGFloat(Int(bounds.height - CGFloat(note.timeStamp.inTicks.value) / 5))
-            return CGPoint(x: centerX, y: centerY + CGFloat(yOffset))
-        } else {
-            centerX = (width + 4) * Double(note.note - 21)
-            centerY = CGFloat(Int(bounds.height - CGFloat(note.timeStamp.inTicks.value) / 5))
-            return CGPoint(x: centerX, y: centerY + CGFloat(yOffset))
-        }
+    //MARK: Private func
+   private func getCenter(note: MidiNoteTrack.Element) -> CGPoint {
+        let centerX = (keyboardSheme.buttons[Int(note.note) - 21].frame.minX)
+        let centerY = CGFloat(Int(bounds.height - CGFloat(note.timeStamp.inTicks.value) / 5))
+        return CGPoint(x: centerX, y: centerY + yOffset)
     }
     
-    //MARK: Private func
     private func drawRect(context: CGContext, center: CGPoint, height: CGFloat, color: CGColor) {
         context.setFillColor(color)
         context.beginPath()

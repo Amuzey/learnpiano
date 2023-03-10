@@ -10,16 +10,17 @@ import AudioKit
 import SnapKit
 
 class Keyboard: UIView {
-    
-    private var keyboardSheme = KeyboardSheme.shared
     private let conductor = MIDIMonitorConductor()
+    private var keyboardSheme = KeyboardSheme.shared
     var targetAction: [TargetAction] = []
     let height: CGFloat = 100
     let width = (UIScreen.main.bounds.width - 200) / 51
+    var buttons: [Int: UIButton] = [:]
+    var keyboardButtons: [KeyboardButton] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup(width: Double(width), height: height)
+        setup(width: width, height: height)
     }
     
     required init?(coder: NSCoder) {
@@ -38,6 +39,9 @@ class Keyboard: UIView {
             sendSubviewToBack(whiteButton)
             createButtons(button: whiteButton, number: counter)
             buttons[counter] = whiteButton
+            let buttonFrame = CGRect(x: (width + 4) * Double(number), y: 0, width: Double(width), height: Double(height))
+            let keyboardButton = KeyboardButton(number: counter, frame: buttonFrame, button: whiteButton)
+            keyboardButtons.append(keyboardButton)
             counter += 1
             
             whiteButton.snp.makeConstraints { make in
@@ -53,6 +57,9 @@ class Keyboard: UIView {
             if mas.contains(number) {
                 let blackButton = UIButton()
                 addSubview(blackButton)
+                let blackButtonFrame = CGRect(x: (width + 4) * Double(number) + width / 2, y: 0, width: Double(width), height: Double(height / 2))
+                let blackKeyboardButton = KeyboardButton(number: counter, frame: blackButtonFrame, button: blackButton)
+                keyboardButtons.append(blackKeyboardButton)
                 blackButton.backgroundColor = .black
                 createButtons(button: blackButton, number: counter)
                 blackButton.snp.makeConstraints { make in
@@ -66,6 +73,7 @@ class Keyboard: UIView {
                 counter += 1
             }
         }
+        keyboardSheme.saveButtons(buttons: keyboardButtons)
         
         conductor.data.signalOn = { note in
             print("singnalOn", note)
@@ -81,7 +89,6 @@ class Keyboard: UIView {
                 buttons[note]?.backgroundColor = .white
             }
         }
-        keyboardSheme.addButtons(buttons: blackBtn)
     }
     
     private func createButtons(button: UIButton, number: Int) {
@@ -90,7 +97,7 @@ class Keyboard: UIView {
         button.layer.cornerRadius = 3
         button.layer.maskedCorners = [.layerMinXMaxYCorner,
                                       .layerMaxXMaxYCorner]
-
+        
         let btnColor = button.backgroundColor
         let stop =
         TargetAction {
@@ -122,7 +129,7 @@ class Keyboard: UIView {
         button.addTarget(getWhite, action: #selector(TargetAction.action), for: .touchDragExit)
         button.addTarget(play, action: #selector(TargetAction.action), for: .touchUpInside)
     }
-
+    
     private func getHidden(btn: UIButton, number: Int) {
         btn.tag = number
         switch number {
