@@ -39,7 +39,7 @@ final class MIDIMonitorConductor: ObservableObject, HasAudioEngine {
     var data = MIDIMonitorData()
     let engine = AudioEngine()
     var instrument = MIDISampler(name: "Instrument 1")
-    let sonata = "rightHand"
+    let sonata = "sonata_dlya_fortepiano_14_-_lunnaya_sonata"
     var playing = true
     var midiPlayer: AVMIDIPlayer?
     var dictionary: [Note] = []

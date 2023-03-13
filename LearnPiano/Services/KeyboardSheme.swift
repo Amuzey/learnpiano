@@ -8,9 +8,7 @@
 import UIKit
 
 class KeyboardSheme {
-
     static let shared = KeyboardSheme()
-    
     var buttons: [KeyboardButton] = []
     
     func saveButtons(buttons: [KeyboardButton]) {

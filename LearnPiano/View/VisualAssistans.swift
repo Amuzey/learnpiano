@@ -19,6 +19,7 @@ class VisualAssistans: UIView {
     private lazy var width = (UIScreen.main.bounds.width - 200) / 51
     private lazy var trackLeft = midiLeft.midi.noteTracks[1]
     private lazy var trackRight = midiRight.midi.noteTracks[1]
+    static var timeInterval =  0.0125
     
     //MARK: Init
     override init(frame: CGRect) {
@@ -70,7 +71,7 @@ class VisualAssistans: UIView {
     }
     
     private func startTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 0.75/60.0, repeats: true) { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: VisualAssistans.timeInterval, repeats: true) { [weak self] _ in
             self?.updateCirclesPosition()
         }
     }

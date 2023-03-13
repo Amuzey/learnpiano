@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     //MARK: - Private properties
     private let keyboard = Keyboard()
     private let visualAssistans = VisualAssistans()
+    private let soundPlayer = SoundPlayer()
     
     //MARK: - Life cycles
     override func viewDidLoad() {
@@ -21,7 +22,7 @@ class ViewController: UIViewController {
         print(">>>")
         setupKeyBoard()
         setupViewAssistans()
-        
+        setupSoundPlayer()
     }
     
     //MARK: - Private methods
@@ -44,6 +45,16 @@ class ViewController: UIViewController {
             make.trailing.equalToSuperview()
             make.bottom.equalTo(keyboard.snp_topMargin)
             make.height.equalTo(view.bounds.height / 3)
+        }
+    }
+    
+    private func setupSoundPlayer() {
+        view.addSubview(soundPlayer)
+        soundPlayer.backgroundColor = .lightGray
+        soundPlayer.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(visualAssistans.snp_topMargin)
+            make.height.equalTo(100)
         }
     }
 }
