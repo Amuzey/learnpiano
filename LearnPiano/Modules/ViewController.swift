@@ -23,6 +23,7 @@ class ViewController: UIViewController {
         setupKeyBoard()
         setupViewAssistans()
         setupSoundPlayer()
+        soundPlayer.delegate = visualAssistans
     }
     
     //MARK: - Private methods

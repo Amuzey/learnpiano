@@ -8,24 +8,30 @@
 import UIKit
 import MidiParser
 
-class VisualAssistans: UIView {
-    
+protocol VisualAssistansDelegate: AnyObject {
+    func plusInterval()
+    func minusInterval()
+    func repeatMidi()
+    func playMidi()
+    func stopMidi()
+}
+
+class VisualAssistans: UIView, VisualAssistansDelegate {
     //MARK: - Private properties
     private let keyboardSheme = KeyboardSheme.shared
     private let midiLeft = MidiParser(midiName: "leftHand")
     private let midiRight = MidiParser(midiName: "rightHand")
     private var timer: Timer?
+    private var timeInterval =  0.0125
     private var yOffset: CGFloat = 0
     private lazy var width = (UIScreen.main.bounds.width - 200) / 51
     private lazy var trackLeft = midiLeft.midi.noteTracks[1]
     private lazy var trackRight = midiRight.midi.noteTracks[1]
-    static var timeInterval =  0.0125
     
     //MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        startTimer()
-        print(trackLeft[0].note)
+//        startTimer(timeInterval: timeInterval)
     }
     
     required init?(coder: NSCoder) {
@@ -70,19 +76,49 @@ class VisualAssistans: UIView {
         context.fillPath()
     }
     
-    private func startTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: VisualAssistans.timeInterval, repeats: true) { [weak self] _ in
-            self?.updateCirclesPosition()
+    private func startTimer(timeInterval: Double) {
+        timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { [weak self] _ in
+                self?.updateCirclesPosition()
         }
     }
     
-    private func stopTimer() {
+    func plusInterval() {
+        timeInterval -= 0.010
+        stopTimer()
+        startTimer(timeInterval: timeInterval)
+        print("plus")
+    }
+    func minusInterval() {
+        timeInterval += 0.010
+        stopTimer()
+        startTimer(timeInterval: timeInterval)
+        print("minus")
+    }
+    
+    func repeatMidi() {
+        yOffset = 0
+        stopTimer()
+        setNeedsDisplay()
+        print("repeatMidi")
+    }
+    
+    func playMidi() {
+        print("playMidi")
+        startTimer(timeInterval: timeInterval)
+    }
+    
+    func stopMidi() {
+        print("stopMidi")
+        stopTimer()
+    }
+    func stopTimer() {
         timer?.invalidate()
         timer = nil
     }
     
     private func updateCirclesPosition() {
         yOffset += 1
+        print(yOffset)
         setNeedsDisplay()
     }
     

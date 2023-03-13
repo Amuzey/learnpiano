@@ -9,9 +9,11 @@ import UIKit
 import SnapKit
 
 class SoundPlayer: UIView {
+    
+    weak var delegate: VisualAssistansDelegate!
+    
     var targetAction: [TargetAction] = []
     private let conductor = MIDIMonitorConductor()
-    
     private let playButton: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(systemName: "play.circle"), for: .normal)
@@ -32,6 +34,7 @@ class SoundPlayer: UIView {
         button.tintColor = .black
         return button
     }()
+    
     private let minusButton: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(systemName: "minus.circle"), for: .normal)
@@ -58,10 +61,11 @@ class SoundPlayer: UIView {
     
     func configureView() {
         let stackView = UIStackView(arrangedSubviews: [playButton, stopButton, plusButton, minusButton, repeatButton])
+        
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = 20
+        stackView.spacing = 50
         addSubview(stackView)
         
         stackView.snp.makeConstraints { make in
@@ -71,19 +75,20 @@ class SoundPlayer: UIView {
     
     func addActions() {
         let playAction = TargetAction {
-            self.conductor.play()
+//            self.conductor.play()
+            self.delegate.playMidi()
         }
         let stopAction = TargetAction {
-            self.conductor.stopThis()
+            self.delegate.stopMidi()
         }
         let plusAction = TargetAction {
-            print("+")
+            self.delegate.plusInterval()
         }
         let minusAction = TargetAction {
-            print("-")
+            self.delegate.minusInterval()
         }
         let repeatAction = TargetAction {
-            print("repeat")
+            self.delegate.repeatMidi()
         }
         targetAction.append(playAction)
         targetAction.append(stopAction)
