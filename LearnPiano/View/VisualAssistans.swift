@@ -8,7 +8,7 @@
 import UIKit
 import MidiParser
 
-protocol VisualAssistansDelegate: AnyObject {
+protocol VisualSoundPlayerDelegate: AnyObject {
     func plusInterval()
     func minusInterval()
     func repeatMidi()
@@ -16,11 +16,12 @@ protocol VisualAssistansDelegate: AnyObject {
     func stopMidi()
 }
 
-protocol VisualAssistansDelegate2: AnyObject {
+protocol VisualKeyboardDelegate: AnyObject {
     func clickButton(note: Int)
 }
 
-class VisualAssistans: UIView, VisualAssistansDelegate, VisualAssistansDelegate2 {
+class VisualAssistans: UIView {
+    
     //MARK: - Private properties
     private let keyboardSheme = KeyboardSheme.shared
     private let midiLeft = MidiParser(midiName: "leftHand")
@@ -33,7 +34,7 @@ class VisualAssistans: UIView, VisualAssistansDelegate, VisualAssistansDelegate2
     private lazy var trackLeft = midiLeft.midi.noteTracks[1]
     private lazy var trackRight = midiRight.midi.noteTracks[1]
     
-    //MARK: Init
+    //MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         //        startTimer(timeInterval: timeInterval)
@@ -43,7 +44,7 @@ class VisualAssistans: UIView, VisualAssistansDelegate, VisualAssistansDelegate2
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: Life cycles
+    //MARK: Life cycles methods
     override func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         for note in trackRight {
@@ -58,7 +59,11 @@ class VisualAssistans: UIView, VisualAssistansDelegate, VisualAssistansDelegate2
         }
     }
     
-    //MARK: Private func
+    deinit {
+        stopTimer()
+    }
+    
+    //MARK: Private methods
     private func setColor(note: MidiNoteTrack.Element) -> CGColor {
         if keyboardSheme.buttons[Int(note.note)].isClicked ?? false {
             return UIColor.systemGreen.cgColor
@@ -87,6 +92,41 @@ class VisualAssistans: UIView, VisualAssistansDelegate, VisualAssistansDelegate2
         }
     }
     
+    private func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    private func updateCirclesPosition() {
+        yOffset += 1
+        print(yOffset)
+        setNeedsDisplay()
+        
+        for note in trackRight {
+            let center = getCenter(note: note)
+            if Int(center.y) + Int(note.duration.inTicks.value / 8) == Int(bounds.height) {
+                stopTimer()
+                clickedNote = Int(note.note)
+            }
+        }
+    }
+}
+
+
+//MARK: VisualSoundPlayerDelegate, VisualKeyboardDelegate
+extension VisualAssistans: VisualSoundPlayerDelegate, VisualKeyboardDelegate {
+    func playMidi() {
+        print("playMidi")
+        if timer == nil {
+            startTimer(timeInterval: timeInterval)
+        }
+    }
+    
+    func stopMidi() {
+        print("stopMidi")
+        stopTimer()
+    }
+    
     func plusInterval() {
         timeInterval -= 0.010
         stopTimer()
@@ -107,44 +147,9 @@ class VisualAssistans: UIView, VisualAssistansDelegate, VisualAssistansDelegate2
         print("repeatMidi")
     }
     
-    func playMidi() {
-        print("playMidi")
-        if timer == nil {
-            startTimer(timeInterval: timeInterval)
-        }
-    }
-    
-    func stopMidi() {
-        print("stopMidi")
-        stopTimer()
-    }
-    func stopTimer() {
-        timer?.invalidate()
-        timer = nil
-    }
-    
     func clickButton(note: Int) {
         if note == clickedNote {
             playMidi()
         }
     }
-    
-    private func updateCirclesPosition() {
-        yOffset += 1
-        print(yOffset)
-        setNeedsDisplay()
-        
-        for note in trackRight {
-            let center = getCenter(note: note)
-            if Int(center.y) + Int(note.duration.inTicks.value / 8) == Int(bounds.height) {
-                stopTimer()
-                clickedNote = Int(note.note)
-            }
-        }
-    }
-    
-    deinit {
-        stopTimer()
-    }
 }
-

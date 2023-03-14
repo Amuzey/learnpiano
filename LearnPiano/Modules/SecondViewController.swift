@@ -9,23 +9,27 @@ import UIKit
 
 final class SecondViewController: UIViewController {
     static let shared = SecondViewController()
-
-    private let imageView: NotesView = {
-         let image = NotesView()
-         return image
-     }()
     
-    func getInfoAboutNotes(size: UInt8) {
-        print(size)
-    }
-
+    //MARK: - Private properties
+    private let imageView: NotesView = {
+        let image = NotesView()
+        return image
+    }()
+    
+    
+    // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-
+        
     }
-
-    func setupView() {
+    
+    // MARK: - Private Methods
+    private func getInfoAboutNotes(size: UInt8) {
+        print(size)
+    }
+    
+    private func setupView() {
         title = "Second View Controller"
         view.backgroundColor = .lightText
         view.addSubview(imageView)

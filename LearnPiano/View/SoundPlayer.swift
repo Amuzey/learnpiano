@@ -10,9 +10,12 @@ import SnapKit
 
 class SoundPlayer: UIView {
     
-    weak var delegate: VisualAssistansDelegate!
+    weak var delegate: VisualSoundPlayerDelegate!
     
+    //MARK: Public properties
     var targetAction: [TargetAction] = []
+    
+    //MARK: - Private properties
     private let conductor = MIDIMonitorConductor()
     private let playButton: UIButton = {
         let button = UIButton()
@@ -49,6 +52,7 @@ class SoundPlayer: UIView {
         return button
     }()
     
+    //MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureView()
@@ -59,23 +63,22 @@ class SoundPlayer: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureView() {
+    // MARK: - Private Methods
+    private func configureView() {
         let stackView = UIStackView(arrangedSubviews: [playButton, stopButton, plusButton, minusButton, repeatButton])
-        
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.spacing = 50
         addSubview(stackView)
-        
         stackView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview()
         }
     }
     
-    func addActions() {
+    private func addActions() {
         let playAction = TargetAction {
-//            self.conductor.play()
+            //            self.conductor.play()
             self.delegate.playMidi()
         }
         let stopAction = TargetAction {

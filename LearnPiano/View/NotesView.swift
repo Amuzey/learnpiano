@@ -9,7 +9,18 @@ import UIKit
 import SnapKit
 
 class NotesView: UIView {
+        
+    //MARK: - Initializers
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .white
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Lyfe cycles methods
     override func draw(_ rect: CGRect) {
         let conductor = MIDIMonitorConductor()
         let dictionary = conductor.dictionary
@@ -19,20 +30,11 @@ class NotesView: UIView {
         }
     }
     
-    func setup(x: Double, y: Double, width: Double, height: Double, color: UIColor) {
+    //MARK: - Private methods
+    private func setup(x: Double, y: Double, width: Double, height: Double, color: UIColor) {
         let pathRect = CGRect(x: x, y: y, width: width, height: height)
         let path = UIBezierPath(roundedRect: pathRect, cornerRadius: 24)
-
         color.setFill()
         path.fill()
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = .white
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

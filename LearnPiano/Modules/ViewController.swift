@@ -16,7 +16,7 @@ final class ViewController: UIViewController {
     private let visualAssistans = VisualAssistans()
     private let soundPlayer = SoundPlayer()
     
-    //MARK: - Life cycles
+    // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupKeyBoard()

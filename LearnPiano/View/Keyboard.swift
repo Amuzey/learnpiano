@@ -11,16 +11,20 @@ import SnapKit
 
 class Keyboard: UIView {
     
-    weak var delegate: VisualAssistansDelegate2!
+    weak var delegate: VisualKeyboardDelegate!
     
+    //MARK: Public properties
+    var targetAction: [TargetAction] = []
+    var keyboardButtons: [KeyboardButton] = []
+    
+    //MARK: - Private properties
     private let conductor = MIDIMonitorConductor()
     private let height: CGFloat = 100
     private let width = (UIScreen.main.bounds.width - 200) / 51
     private var keyboardSheme = KeyboardSheme.shared
     private var buttons: [Int: UIButton] = [:]
-    var targetAction: [TargetAction] = []
-    var keyboardButtons: [KeyboardButton] = []
     
+    //MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup(width: width, height: height)
@@ -30,8 +34,9 @@ class Keyboard: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Private methods
     private func setup(width: Double, height: CGFloat) {
-        var buttons: [Int: UIButton] = [:]
+//        let buttons: [Int: UIButton] = [:]
         var blackBtn: [Int] = []
         
         var counter = 21
@@ -52,16 +57,16 @@ class Keyboard: UIView {
         
         conductor.data.signalOn = { note in
             print("singnalOn", note)
-            buttons[note]?.backgroundColor = .red
+            self.buttons[note]?.backgroundColor = .red
         }
         
         conductor.data.signalOff = { note in
             print("singnalOff", note)
-            buttons[note]?.backgroundColor = .white
+            self.buttons[note]?.backgroundColor = .white
             if blackBtn.contains(note) {
-                buttons[note]?.backgroundColor = .black
+                self.buttons[note]?.backgroundColor = .black
             } else {
-                buttons[note]?.backgroundColor = .white
+                self.buttons[note]?.backgroundColor = .white
             }
         }
     }

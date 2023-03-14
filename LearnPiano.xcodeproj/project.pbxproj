@@ -81,6 +81,7 @@
 		8A7C70B629B5A6060068178D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D93813EB297B10E500A0A3DF /* Assets.xcassets */,
 				8A7C70E129B709760068178D /* Sounds */,
 				8A7C70DF29B706940068178D /* sonata_dlya_fortepiano_14_-_lunnaya_sonata.midi */,
 				8A7C70C329B60E790068178D /* leftHand.mid */,
@@ -134,6 +135,25 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		8A99CBDC29C0B4E600236216 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				D93813F0297B10E500A0A3DF /* Info.plist */,
+				D93813FD297B155300A0A3DF /* SceneDelegate.swift */,
+				D93813E2297B10E100A0A3DF /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		8A99CBDD29C0B52E00236216 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D93813E8297B10E100A0A3DF /* Main.storyboard */,
+				D93813ED297B10E500A0A3DF /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		D93813D6297B10E100A0A3DF = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +173,7 @@
 		D93813E1297B10E100A0A3DF /* LearnPiano */ = {
 			isa = PBXGroup;
 			children = (
+				D93813F6297B10FB00A0A3DF /* LearnPiano.entitlements */,
 				8A8AAE1129BB393B00BA98F9 /* Model */,
 				8A7C70CC29B628BF0068178D /* ButtonExtension */,
 				8A7C70C929B628740068178D /* ButtonAction */,
@@ -160,13 +181,8 @@
 				8A7C70B629B5A6060068178D /* Resources */,
 				D93813FF297B15E600A0A3DF /* Modules */,
 				8A7C70BE29B5C29B0068178D /* View */,
-				D93813F6297B10FB00A0A3DF /* LearnPiano.entitlements */,
-				D93813E2297B10E100A0A3DF /* AppDelegate.swift */,
-				D93813FD297B155300A0A3DF /* SceneDelegate.swift */,
-				D93813E8297B10E100A0A3DF /* Main.storyboard */,
-				D93813EB297B10E500A0A3DF /* Assets.xcassets */,
-				D93813ED297B10E500A0A3DF /* LaunchScreen.storyboard */,
-				D93813F0297B10E500A0A3DF /* Info.plist */,
+				8A99CBDC29C0B4E600236216 /* Application */,
+				8A99CBDD29C0B52E00236216 /* Storyboards */,
 			);
 			path = LearnPiano;
 			sourceTree = "<group>";
@@ -440,7 +456,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MW99RRP4BD;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LearnPiano/Info.plist;
+				INFOPLIST_FILE = LearnPiano/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -470,7 +486,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MW99RRP4BD;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LearnPiano/Info.plist;
+				INFOPLIST_FILE = LearnPiano/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
