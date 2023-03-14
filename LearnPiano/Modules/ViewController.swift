@@ -9,7 +9,7 @@ import UIKit
 import AudioKit
 import SnapKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
     //MARK: - Private properties
     private let keyboard = Keyboard()
@@ -19,11 +19,11 @@ class ViewController: UIViewController {
     //MARK: - Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(">>>")
         setupKeyBoard()
         setupViewAssistans()
         setupSoundPlayer()
         soundPlayer.delegate = visualAssistans
+        keyboard.delegate = visualAssistans
     }
     
     //MARK: - Private methods
@@ -31,9 +31,7 @@ class ViewController: UIViewController {
         view.addSubview(keyboard)
         keyboard.backgroundColor = .lightGray
         keyboard.snp.makeConstraints { make in
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(100)
         }
     }
@@ -42,8 +40,7 @@ class ViewController: UIViewController {
         view.addSubview(visualAssistans)
         visualAssistans.backgroundColor = .darkGray
         visualAssistans.snp.makeConstraints { make in
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(keyboard.snp_topMargin)
             make.height.equalTo(view.bounds.height / 3)
         }

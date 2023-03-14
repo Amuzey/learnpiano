@@ -13,7 +13,6 @@ import MidiParser
 
 final class MIDIMonitorConductor: ObservableObject, HasAudioEngine {
     struct Note {
-        
         let track: Int
         let note: Int
         let time: Double

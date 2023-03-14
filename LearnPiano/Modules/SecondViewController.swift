@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+final class SecondViewController: UIViewController {
     static let shared = SecondViewController()
 
     private let imageView: NotesView = {

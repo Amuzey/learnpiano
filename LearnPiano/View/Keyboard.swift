@@ -10,12 +10,15 @@ import AudioKit
 import SnapKit
 
 class Keyboard: UIView {
+    
+    weak var delegate: VisualAssistansDelegate2!
+    
     private let conductor = MIDIMonitorConductor()
+    private let height: CGFloat = 100
+    private let width = (UIScreen.main.bounds.width - 200) / 51
     private var keyboardSheme = KeyboardSheme.shared
+    private var buttons: [Int: UIButton] = [:]
     var targetAction: [TargetAction] = []
-    let height: CGFloat = 100
-    let width = (UIScreen.main.bounds.width - 200) / 51
-    var buttons: [Int: UIButton] = [:]
     var keyboardButtons: [KeyboardButton] = []
     
     override init(frame: CGRect) {
@@ -33,43 +36,15 @@ class Keyboard: UIView {
         
         var counter = 21
         for number in 0..<51 {
-            let whiteButton = UIButton()
-            whiteButton.backgroundColor = .white
-            addSubview(whiteButton)
-            sendSubviewToBack(whiteButton)
-            createButtons(button: whiteButton, number: counter)
-            buttons[counter] = whiteButton
-            let buttonFrame = CGRect(x: (width + 4) * Double(number), y: 0, width: Double(width), height: Double(height))
-            let keyboardButton = KeyboardButton(number: counter, frame: buttonFrame, button: whiteButton)
-            keyboardButtons.append(keyboardButton)
+            createWhiteButton(counter: counter, number: number)
             counter += 1
-            
-            whiteButton.snp.makeConstraints { make in
-                make.leading.equalToSuperview().offset((width + 4) * Double(number))
-                make.bottom.equalToSuperview()
-                make.width.equalTo(width)
-                make.height.equalTo(height)
-            }
             var mas = [0]
             for i in 0...7 {
                 mas.append(contentsOf: [2 + 7 * i, 3 + 7 * i, 5 + 7 * i, 6 + 7 * i, 7 + 7 * i])
             }
             if mas.contains(number) {
-                let blackButton = UIButton()
-                addSubview(blackButton)
-                let blackButtonFrame = CGRect(x: (width + 4) * Double(number) + width / 2, y: 0, width: Double(width), height: Double(height / 2))
-                let blackKeyboardButton = KeyboardButton(number: counter, frame: blackButtonFrame, button: blackButton)
-                keyboardButtons.append(blackKeyboardButton)
-                blackButton.backgroundColor = .black
-                createButtons(button: blackButton, number: counter)
-                blackButton.snp.makeConstraints { make in
-                    make.leading.equalToSuperview().offset((width + 4) * Double(number) + width / 2)
-                    make.top.equalToSuperview()
-                    make.height.equalTo(height / 2)
-                    make.width.equalTo(width)
-                }
+                createBlackButton(counter: counter, number: number)
                 blackBtn.append(counter)
-                buttons[counter] = blackButton
                 counter += 1
             }
         }
@@ -89,6 +64,42 @@ class Keyboard: UIView {
                 buttons[note]?.backgroundColor = .white
             }
         }
+    }
+    
+    private func createWhiteButton(counter: Int, number: Int) {
+        let whiteButton = UIButton()
+        whiteButton.backgroundColor = .white
+        addSubview(whiteButton)
+        sendSubviewToBack(whiteButton)
+        createButtons(button: whiteButton, number: counter)
+        buttons[counter] = whiteButton
+        let buttonFrame = CGRect(x: (width + 4) * Double(number), y: 0, width: Double(width), height: Double(height))
+        let keyboardButton = KeyboardButton(number: counter, frame: buttonFrame, button: whiteButton)
+        keyboardButtons.append(keyboardButton)
+        
+        whiteButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset((width + 4) * Double(number))
+            make.bottom.equalToSuperview()
+            make.width.equalTo(width)
+            make.height.equalTo(height)
+        }
+    }
+    
+    private func createBlackButton(counter: Int, number: Int) {
+        let blackButton = UIButton()
+        addSubview(blackButton)
+        let blackButtonFrame = CGRect(x: (width + 4) * Double(number) + width / 2, y: 0, width: Double(width), height: Double(height / 2))
+        let blackKeyboardButton = KeyboardButton(number: counter, frame: blackButtonFrame, button: blackButton)
+        keyboardButtons.append(blackKeyboardButton)
+        blackButton.backgroundColor = .black
+        createButtons(button: blackButton, number: counter)
+        blackButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset((width + 4) * Double(number) + width / 2)
+            make.top.equalToSuperview()
+            make.height.equalTo(height / 2)
+            make.width.equalTo(width)
+        }
+        buttons[counter] = blackButton
     }
     
     private func createButtons(button: UIButton, number: Int) {
@@ -120,6 +131,7 @@ class Keyboard: UIView {
             try? self.conductor.engine.start()
             self.conductor.instrument.play(noteNumber: MIDINoteNumber(number), velocity: 70, channel: 0)
             self.keyboardSheme.click(note: number)
+            self.delegate.clickButton(note: number)
             print(">>>> ", number)
         }
         
