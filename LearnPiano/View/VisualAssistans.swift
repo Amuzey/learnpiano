@@ -66,11 +66,7 @@ class VisualAssistans: UIView {
     
     //MARK: Private methods
     private func setColor(note: MidiNoteTrack.Element) -> CGColor {
-        if keyboardSheme.buttons[Int(note.note)].isClicked ?? false {
-            return UIColor.systemGreen.cgColor
-        } else {
             return UIColor.systemYellow.cgColor
-        }
     }
     
     private func getCenter(note: MidiNoteTrack.Element) -> CGPoint {

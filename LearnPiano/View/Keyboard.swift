@@ -41,11 +41,13 @@ class Keyboard: UIView, KeyboardDelegate {
     func pressedButton(note: Int) {
         let button = buttons[note]
         button?.sendActions(for: .touchDown)
+        button?.backgroundColor = .yellow
     }
     
     func releaseButton(note: Int) {
         let button = buttons[note]
         button?.sendActions(for: .touchUpInside)
+        button?.backgroundColor = keyboardSheme.buttons[note - 21].btnColor
     }
     
     //MARK: - Private methods
@@ -93,7 +95,7 @@ class Keyboard: UIView, KeyboardDelegate {
         createButtons(button: whiteButton, number: counter)
         buttons[counter] = whiteButton
         let buttonFrame = CGRect(x: (width + 4) * Double(number), y: 0, width: Double(width), height: Double(height))
-        let keyboardButton = KeyboardButton(number: counter, frame: buttonFrame, button: whiteButton)
+        let keyboardButton = KeyboardButton(number: counter, frame: buttonFrame, btnColor: .white, button: whiteButton)
         keyboardButtons.append(keyboardButton)
         
         whiteButton.snp.makeConstraints { make in
@@ -108,7 +110,7 @@ class Keyboard: UIView, KeyboardDelegate {
         let blackButton = UIButton()
         addSubview(blackButton)
         let blackButtonFrame = CGRect(x: (width + 4) * Double(number) + width / 2, y: 0, width: Double(width), height: Double(height / 2))
-        let blackKeyboardButton = KeyboardButton(number: counter, frame: blackButtonFrame, button: blackButton)
+        let blackKeyboardButton = KeyboardButton(number: counter, frame: blackButtonFrame, btnColor: .black, button: blackButton)
         keyboardButtons.append(blackKeyboardButton)
         blackButton.backgroundColor = .black
         createButtons(button: blackButton, number: counter)

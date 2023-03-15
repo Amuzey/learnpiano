@@ -10,6 +10,7 @@ import UIKit
 struct KeyboardButton {
     let number: Int
     let frame: CGRect
+    let btnColor: UIColor
     var button: UIButton
     var isClicked: Bool? = false
     var isCorect: Bool? = false
