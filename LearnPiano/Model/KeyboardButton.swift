@@ -12,4 +12,5 @@ struct KeyboardButton {
     let frame: CGRect
     var button: UIButton
     var isClicked: Bool? = false
+    var isCorect: Bool? = false
 }

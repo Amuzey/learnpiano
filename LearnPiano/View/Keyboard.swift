@@ -9,8 +9,11 @@ import UIKit
 import AudioKit
 import SnapKit
 
-class Keyboard: UIView {
-    
+protocol KeyboardDelegate {
+    func tapedButton(note: Int)
+}
+
+class Keyboard: UIView, KeyboardDelegate {
     weak var delegate: VisualKeyboardDelegate!
     
     //MARK: Public properties
@@ -32,6 +35,11 @@ class Keyboard: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func tapedButton(note: Int) {
+        let button = buttons[note]
+        button?.sendActions(for: .touchUpInside)
     }
     
     //MARK: - Private methods

@@ -22,6 +22,8 @@ protocol VisualKeyboardDelegate: AnyObject {
 
 class VisualAssistans: UIView {
     
+    var delegate: KeyboardDelegate!
+    
     //MARK: - Private properties
     private let keyboardSheme = KeyboardSheme.shared
     private let midiLeft = MidiParser(midiName: "leftHand")
@@ -38,6 +40,10 @@ class VisualAssistans: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         //        startTimer(timeInterval: timeInterval)
+        
+        for note in trackRight {
+            print(note)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -105,8 +111,8 @@ class VisualAssistans: UIView {
         for note in trackRight {
             let center = getCenter(note: note)
             if Int(center.y) + Int(note.duration.inTicks.value / 8) == Int(bounds.height) {
-                stopTimer()
-                clickedNote = Int(note.note)
+//                stopTimer()
+                delegate.tapedButton(note: Int(note.note))
             }
         }
     }
@@ -128,13 +134,13 @@ extension VisualAssistans: VisualSoundPlayerDelegate, VisualKeyboardDelegate {
     }
     
     func plusInterval() {
-        timeInterval -= 0.010
+        timeInterval -= 0.0010
         stopTimer()
         startTimer(timeInterval: timeInterval)
         print("plus")
     }
     func minusInterval() {
-        timeInterval += 0.010
+        timeInterval += 0.0010
         stopTimer()
         startTimer(timeInterval: timeInterval)
         print("minus")
@@ -149,6 +155,7 @@ extension VisualAssistans: VisualSoundPlayerDelegate, VisualKeyboardDelegate {
     
     func clickButton(note: Int) {
         if note == clickedNote {
+            keyboardSheme.buttons[note].isCorect?.toggle()
             playMidi()
         }
     }

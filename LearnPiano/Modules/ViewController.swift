@@ -24,6 +24,7 @@ final class ViewController: UIViewController {
         setupSoundPlayer()
         soundPlayer.delegate = visualAssistans
         keyboard.delegate = visualAssistans
+        visualAssistans.delegate = keyboard
     }
     
     //MARK: - Private methods

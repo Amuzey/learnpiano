@@ -76,7 +76,7 @@ final class MIDIMonitorConductor: ObservableObject, HasAudioEngine {
                                             note: Int(track[x].note),
                                             time: Double(track[x].timeStamp.inTicks.value),
                                             duration: Double(track[x].duration.inTicks.value)))
-                    print(track[x].timeStamp.inTicks.value, track[x].timeStamp.inSeconds)
+//                    print(track[x].timeStamp.inTicks.value, track[x].timeStamp.inSeconds)
                 }
             }
             
