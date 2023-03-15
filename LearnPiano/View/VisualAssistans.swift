@@ -39,11 +39,6 @@ class VisualAssistans: UIView {
     //MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //        startTimer(timeInterval: timeInterval)
-        
-        for note in trackRight {
-            print(note)
-        }
     }
     
     required init?(coder: NSCoder) {
@@ -105,7 +100,6 @@ class VisualAssistans: UIView {
     
     private func updateCirclesPosition() {
         yOffset += 1
-        print(yOffset)
         setNeedsDisplay()
         
         for note in trackLeft {
@@ -134,14 +128,12 @@ class VisualAssistans: UIView {
 //MARK: VisualSoundPlayerDelegate, VisualKeyboardDelegate
 extension VisualAssistans: VisualSoundPlayerDelegate, VisualKeyboardDelegate {
     func playMidi() {
-        print("playMidi")
         if timer == nil {
             startTimer(timeInterval: timeInterval)
         }
     }
     
     func stopMidi() {
-        print("stopMidi")
         stopTimer()
     }
     
@@ -149,20 +141,17 @@ extension VisualAssistans: VisualSoundPlayerDelegate, VisualKeyboardDelegate {
         timeInterval -= 0.0010
         stopTimer()
         startTimer(timeInterval: timeInterval)
-        print("plus")
     }
     func minusInterval() {
         timeInterval += 0.0010
         stopTimer()
         startTimer(timeInterval: timeInterval)
-        print("minus")
     }
     
     func repeatMidi() {
         yOffset = 0
         stopTimer()
         setNeedsDisplay()
-        print("repeatMidi")
     }
     
     func clickButton(note: Int) {

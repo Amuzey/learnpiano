@@ -67,10 +67,27 @@ class SoundPlayer: UIView {
     private func configureView() {
         let stackView = UIStackView(arrangedSubviews: [playButton, stopButton, plusButton, minusButton, repeatButton])
         stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
+        stackView.alignment = .center
+        stackView.distribution = .equalCentering
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = 50
+        stackView.spacing = 10
         addSubview(stackView)
+        
+        playButton.snp.makeConstraints { make in
+            make.height.width.equalTo(100)
+        }
+        stopButton.snp.makeConstraints { make in
+            make.size.equalTo(playButton)
+        }
+        plusButton.snp.makeConstraints { make in
+            make.size.equalTo(playButton)
+        }
+        minusButton.snp.makeConstraints { make in
+            make.size.equalTo(playButton)
+        }
+        repeatButton.snp.makeConstraints { make in
+            make.size.equalTo(playButton)
+        }
         stackView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview()
         }
