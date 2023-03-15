@@ -10,7 +10,8 @@ import AudioKit
 import SnapKit
 
 protocol KeyboardDelegate {
-    func tapedButton(note: Int)
+    func pressedButton(note: Int)
+    func releaseButton(note: Int)
 }
 
 class Keyboard: UIView, KeyboardDelegate {
@@ -37,7 +38,12 @@ class Keyboard: UIView, KeyboardDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func tapedButton(note: Int) {
+    func pressedButton(note: Int) {
+        let button = buttons[note]
+        button?.sendActions(for: .touchDown)
+    }
+    
+    func releaseButton(note: Int) {
         let button = buttons[note]
         button?.sendActions(for: .touchUpInside)
     }

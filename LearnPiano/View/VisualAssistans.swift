@@ -108,11 +108,23 @@ class VisualAssistans: UIView {
         print(yOffset)
         setNeedsDisplay()
         
+        for note in trackLeft {
+            let center = getCenter(note: note)
+            if Int(center.y) + Int(note.duration.inTicks.value / 8) == Int(bounds.height) {
+//                stopTimer()
+                delegate.pressedButton(note: Int(note.note))
+            } else if Int(center.y) == Int(bounds.height) {
+                delegate.releaseButton(note: Int(note.note))
+            }
+        }
+   
         for note in trackRight {
             let center = getCenter(note: note)
             if Int(center.y) + Int(note.duration.inTicks.value / 8) == Int(bounds.height) {
 //                stopTimer()
-                delegate.tapedButton(note: Int(note.note))
+                delegate.pressedButton(note: Int(note.note))
+            } else if Int(center.y) == Int(bounds.height) {
+                delegate.releaseButton(note: Int(note.note))
             }
         }
     }
