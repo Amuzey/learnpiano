@@ -73,20 +73,10 @@ class SoundPlayer: UIView {
         stackView.spacing = 10
         addSubview(stackView)
         
-        playButton.snp.makeConstraints { make in
-            make.height.width.equalTo(100)
-        }
-        stopButton.snp.makeConstraints { make in
-            make.size.equalTo(playButton)
-        }
-        plusButton.snp.makeConstraints { make in
-            make.size.equalTo(playButton)
-        }
-        minusButton.snp.makeConstraints { make in
-            make.size.equalTo(playButton)
-        }
-        repeatButton.snp.makeConstraints { make in
-            make.size.equalTo(playButton)
+        stackView.subviews.forEach { button in
+            button.snp.makeConstraints { make in
+                make.height.width.equalTo(100)
+            }
         }
         stackView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview()

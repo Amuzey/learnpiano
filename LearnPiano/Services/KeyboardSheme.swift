@@ -16,6 +16,6 @@ class KeyboardSheme {
     }
     
     func click(note: Int) {
-        buttons[note].isClicked?.toggle()
+        buttons[note - 21].isClicked?.toggle()
     }
 }

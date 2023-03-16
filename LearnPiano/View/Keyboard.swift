@@ -14,7 +14,7 @@ protocol KeyboardDelegate {
     func releaseButton(note: Int)
 }
 
-class Keyboard: UIView, KeyboardDelegate {
+class Keyboard: UIView {
     weak var delegate: VisualKeyboardDelegate!
     
     //MARK: Public properties
@@ -38,21 +38,8 @@ class Keyboard: UIView, KeyboardDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func pressedButton(note: Int) {
-        let button = buttons[note]
-        button?.sendActions(for: .touchDown)
-        button?.backgroundColor = .yellow
-    }
-    
-    func releaseButton(note: Int) {
-        let button = buttons[note]
-        button?.sendActions(for: .touchUpInside)
-        button?.backgroundColor = keyboardSheme.buttons[note - 21].btnColor
-    }
-    
     //MARK: - Private methods
     private func setup(width: Double, height: CGFloat) {
-//        let buttons: [Int: UIButton] = [:]
         var blackBtn: [Int] = []
         
         var counter = 21
@@ -173,5 +160,20 @@ class Keyboard: UIView, KeyboardDelegate {
         default:
             btn.isHidden = false
         }
+    }
+}
+
+//MARK: - KeyboardDelegate
+extension Keyboard: KeyboardDelegate {
+    func pressedButton(note: Int) {
+        let button = buttons[note]
+        button?.sendActions(for: .touchDown)
+        button?.backgroundColor = .yellow
+    }
+    
+    func releaseButton(note: Int) {
+        let button = buttons[note]
+        button?.sendActions(for: .touchUpInside)
+        button?.backgroundColor = keyboardSheme.buttons[note - 21].btnColor
     }
 }
