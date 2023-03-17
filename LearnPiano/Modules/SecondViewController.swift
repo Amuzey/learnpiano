@@ -16,12 +16,10 @@ final class SecondViewController: UIViewController {
         return image
     }()
     
-    
     // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        
     }
     
     // MARK: - Private Methods

@@ -25,6 +25,7 @@
 		8A7C70E829B757A40068178D /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C70E729B757A40068178D /* NotesView.swift */; };
 		8A7C710E29B850420068178D /* KeyboardSheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C710D29B850420068178D /* KeyboardSheme.swift */; };
 		8A8AAE1029BB07D000BA98F9 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8AAE0F29BB07D000BA98F9 /* KeyboardButton.swift */; };
+		8A99CBE329C30FD300236216 /* DocumentPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99CBE229C30FD300236216 /* DocumentPickerController.swift */; };
 		D93813E3297B10E100A0A3DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93813E2297B10E100A0A3DF /* AppDelegate.swift */; };
 		D93813E7297B10E100A0A3DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93813E6297B10E100A0A3DF /* ViewController.swift */; };
 		D93813EA297B10E100A0A3DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D93813E8297B10E100A0A3DF /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 		8A7C70E729B757A40068178D /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		8A7C710D29B850420068178D /* KeyboardSheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSheme.swift; sourceTree = "<group>"; };
 		8A8AAE0F29BB07D000BA98F9 /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
+		8A99CBE229C30FD300236216 /* DocumentPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPickerController.swift; sourceTree = "<group>"; };
 		D93813DF297B10E100A0A3DF /* LearnPiano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearnPiano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93813E2297B10E100A0A3DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D93813E6297B10E100A0A3DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				D93813E6297B10E100A0A3DF /* ViewController.swift */,
+				8A99CBE229C30FD300236216 /* DocumentPickerController.swift */,
 				8A7C70E529B7577B0068178D /* SecondViewController.swift */,
 			);
 			path = Modules;
@@ -300,6 +303,7 @@
 				8A7C70B929B5BDBA0068178D /* MIDIMonitorConductor.swift in Sources */,
 				D93813E7297B10E100A0A3DF /* ViewController.swift in Sources */,
 				8A8AAE1029BB07D000BA98F9 /* KeyboardButton.swift in Sources */,
+				8A99CBE329C30FD300236216 /* DocumentPickerController.swift in Sources */,
 				8A7C70E629B7577B0068178D /* SecondViewController.swift in Sources */,
 				D93813E3297B10E100A0A3DF /* AppDelegate.swift in Sources */,
 				8A7C70CE29B628D70068178D /* ButtonAnimation.swift in Sources */,

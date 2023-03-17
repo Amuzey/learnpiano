@@ -12,10 +12,12 @@ import SnapKit
 protocol KeyboardDelegate {
     func pressedButton(note: Int)
     func releaseButton(note: Int)
+    func resetButtonColor()
 }
 
 class Keyboard: UIView {
     weak var delegate: VisualKeyboardDelegate!
+    var delegate2: KeyboardSoundPlayerDelegate!
     
     //MARK: Public properties
     var targetAction: [TargetAction] = []
@@ -71,6 +73,29 @@ class Keyboard: UIView {
             } else {
                 self.buttons[note]?.backgroundColor = .white
             }
+        }
+        
+        assignCustomActionToFirstFourButtons { note in
+            switch note {
+            case 21: self.delegate2.keyboardPlay()
+            case 23: self.delegate2.keyboardStop()
+            case 24: self.delegate2.keyboardPlus()
+            case 26: self.delegate2.keyboardMinus()
+            case 28: self.delegate2.keyboardRepeat()
+            default:
+                break
+            }
+        }
+    }
+    
+    private func assignCustomActionToFirstFourButtons(action: @escaping (Int) -> Void) {
+        for i in 0..<8 {
+            let button = keyboardButtons[i]
+            let play = TargetAction {
+                action(button.number)
+            }
+            targetAction.insert(play, at: 2*i)
+            button.button.addTarget(play, action: #selector(TargetAction.action), for: .touchUpInside)
         }
     }
     
@@ -175,5 +200,11 @@ extension Keyboard: KeyboardDelegate {
         let button = buttons[note]
         button?.sendActions(for: .touchUpInside)
         button?.backgroundColor = keyboardSheme.buttons[note - 21].btnColor
+    }
+    
+    func resetButtonColor() {
+        for button in keyboardButtons {
+            button.button.backgroundColor = button.btnColor
+        }
     }
 }

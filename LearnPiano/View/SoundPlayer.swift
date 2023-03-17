@@ -8,6 +8,14 @@
 import UIKit
 import SnapKit
 
+protocol KeyboardSoundPlayerDelegate {
+    func keyboardPlay()
+    func keyboardStop()
+    func keyboardPlus()
+    func keyboardMinus()
+    func keyboardRepeat()
+}
+
 class SoundPlayer: UIView {
     
     weak var delegate: VisualSoundPlayerDelegate!
@@ -111,4 +119,28 @@ class SoundPlayer: UIView {
         minusButton.addTarget(minusAction, action: #selector(TargetAction.action), for: .touchUpInside)
         repeatButton.addTarget(repeatAction, action: #selector(TargetAction.action), for: .touchUpInside)
     }
+}
+
+extension SoundPlayer: KeyboardSoundPlayerDelegate {
+    func keyboardPlay() {
+        playButton.sendActions(for: .touchUpInside)
+    }
+    
+    func keyboardStop() {
+        stopButton.sendActions(for: .touchUpInside)
+    }
+    
+    func keyboardPlus() {
+        plusButton.sendActions(for: .touchUpInside)
+    }
+    
+    func keyboardMinus() {
+        minusButton.sendActions(for: .touchUpInside)
+    }
+    
+    func keyboardRepeat() {
+        repeatButton.sendActions(for: .touchUpInside)
+    }
+    
+    
 }

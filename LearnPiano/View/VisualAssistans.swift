@@ -147,6 +147,7 @@ extension VisualAssistans: VisualSoundPlayerDelegate, VisualKeyboardDelegate {
     func repeatMidi() {
         yOffset = 0
         stopTimer()
+        delegate.resetButtonColor()
         setNeedsDisplay()
     }
     
