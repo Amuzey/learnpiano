@@ -26,6 +26,7 @@
 		8A7C710E29B850420068178D /* KeyboardSheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C710D29B850420068178D /* KeyboardSheme.swift */; };
 		8A8AAE1029BB07D000BA98F9 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8AAE0F29BB07D000BA98F9 /* KeyboardButton.swift */; };
 		8A99CBE329C30FD300236216 /* DocumentPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99CBE229C30FD300236216 /* DocumentPickerController.swift */; };
+		8A99CBE529C81E9100236216 /* ControlPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99CBE429C81E9100236216 /* ControlPanel.swift */; };
 		D93813E3297B10E100A0A3DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93813E2297B10E100A0A3DF /* AppDelegate.swift */; };
 		D93813E7297B10E100A0A3DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93813E6297B10E100A0A3DF /* ViewController.swift */; };
 		D93813EA297B10E100A0A3DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D93813E8297B10E100A0A3DF /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 		8A7C710D29B850420068178D /* KeyboardSheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSheme.swift; sourceTree = "<group>"; };
 		8A8AAE0F29BB07D000BA98F9 /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
 		8A99CBE229C30FD300236216 /* DocumentPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPickerController.swift; sourceTree = "<group>"; };
+		8A99CBE429C81E9100236216 /* ControlPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanel.swift; sourceTree = "<group>"; };
 		D93813DF297B10E100A0A3DF /* LearnPiano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearnPiano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93813E2297B10E100A0A3DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D93813E6297B10E100A0A3DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				8A7C70C729B60EE00068178D /* Keyboard.swift */,
 				8A7C70E329B757520068178D /* SoundPlayer.swift */,
 				8A7C70E729B757A40068178D /* NotesView.swift */,
+				8A99CBE429C81E9100236216 /* ControlPanel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A99CBE529C81E9100236216 /* ControlPanel.swift in Sources */,
 				8A7C70E829B757A40068178D /* NotesView.swift in Sources */,
 				8A7C70C829B60EE00068178D /* Keyboard.swift in Sources */,
 				8A7C710E29B850420068178D /* KeyboardSheme.swift in Sources */,

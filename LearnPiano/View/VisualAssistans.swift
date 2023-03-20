@@ -20,6 +20,11 @@ protocol VisualKeyboardDelegate: AnyObject {
     func clickButton(note: Int)
 }
 
+protocol ControlPanelDelegate: AnyObject {
+    func clickLeftHandButton()
+    func clickRightHandButton()
+}
+
 class VisualAssistans: UIView {
     
     var delegate: KeyboardDelegate!
@@ -32,6 +37,18 @@ class VisualAssistans: UIView {
     private var timeInterval =  0.0125
     private var yOffset: CGFloat = 0
     private var clickedNote: Int?
+    private var leftIsHiden = true {
+        didSet {
+            delegate.resetButtonColor()
+            setNeedsDisplay()
+        }
+    }
+    private var rightIsHiden = true {
+        didSet {
+            delegate.resetButtonColor()
+            setNeedsDisplay()
+        }
+    }
     private lazy var width = (UIScreen.main.bounds.width - 200) / 51
     private lazy var trackLeft = midiLeft.midi.noteTracks[1]
     private lazy var trackRight = midiRight.midi.noteTracks[1]
@@ -50,12 +67,12 @@ class VisualAssistans: UIView {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         for note in trackRight {
             let center = getCenter(note: note)
-            let color = setColor(note: note)
+            let color = rightIsHiden ? setColor(note: note) : UIColor.clear.cgColor
             drawRect(context: context, center: center, height: CGFloat(note.duration.inTicks.value / 8), color: color)
         }
         for note in trackLeft {
             let center = getCenter(note: note)
-            let color = setColor(note: note)
+            let color = leftIsHiden ? setColor(note: note) : UIColor.clear.cgColor
             drawRect(context: context, center: center, height: CGFloat(note.duration.inTicks.value / 8), color: color)
         }
     }
@@ -100,20 +117,18 @@ class VisualAssistans: UIView {
         
         for note in trackLeft {
             let center = getCenter(note: note)
-            if Int(center.y) + Int(note.duration.inTicks.value / 8) == Int(bounds.height) {
-//                stopTimer()
+            if Int(center.y) + Int(note.duration.inTicks.value / 8) == Int(bounds.height), leftIsHiden {
                 delegate.pressedButton(note: Int(note.note))
-            } else if Int(center.y) == Int(bounds.height) {
+            } else if Int(center.y) == Int(bounds.height), leftIsHiden {
                 delegate.releaseButton(note: Int(note.note))
             }
         }
    
         for note in trackRight {
             let center = getCenter(note: note)
-            if Int(center.y) + Int(note.duration.inTicks.value / 8) == Int(bounds.height) {
-//                stopTimer()
+            if Int(center.y) + Int(note.duration.inTicks.value / 8) == Int(bounds.height), rightIsHiden {
                 delegate.pressedButton(note: Int(note.note))
-            } else if Int(center.y) == Int(bounds.height) {
+            } else if Int(center.y) == Int(bounds.height), rightIsHiden {
                 delegate.releaseButton(note: Int(note.note))
             }
         }
@@ -156,5 +171,15 @@ extension VisualAssistans: VisualSoundPlayerDelegate, VisualKeyboardDelegate {
             keyboardSheme.buttons[note].isCorect?.toggle()
             playMidi()
         }
+    }
+}
+
+extension VisualAssistans: ControlPanelDelegate {
+    func clickLeftHandButton() {
+        leftIsHiden.toggle()
+    }
+    
+    func clickRightHandButton() {
+        rightIsHiden.toggle()
     }
 }

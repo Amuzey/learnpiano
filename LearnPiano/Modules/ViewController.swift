@@ -16,6 +16,7 @@ final class ViewController: UIViewController {
     private let keyboard = Keyboard()
     private let visualAssistans = VisualAssistans()
     private let soundPlayer = SoundPlayer()
+    private let controlPanel = ControlPanel()
     private let button = UIButton()
     
     // MARK: - Life Cycles Methods
@@ -25,10 +26,12 @@ final class ViewController: UIViewController {
         setupViewAssistans()
         setupSoundPlayer()
         setupAddButton()
+        setupControlPanel()
         soundPlayer.delegate = visualAssistans
         keyboard.delegate = visualAssistans
         visualAssistans.delegate = keyboard
         keyboard.delegate2 = soundPlayer
+        controlPanel.delegate = visualAssistans
     }
     
     //MARK: - Action
@@ -76,6 +79,14 @@ final class ViewController: UIViewController {
             make.height.equalTo(80)
         }
         button.addTarget(self, action: #selector(addData), for: .touchUpInside)
+    }
+    
+    private func setupControlPanel() {
+        view.addSubview(controlPanel)
+        controlPanel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(view.snp_topMargin)
+        }
     }
 }
 
