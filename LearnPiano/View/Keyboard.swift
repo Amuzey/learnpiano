@@ -34,6 +34,7 @@ class Keyboard: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup(width: width, height: height)
+        enableTouch()
     }
     
     required init?(coder: NSCoder) {
@@ -75,7 +76,7 @@ class Keyboard: UIView {
             }
         }
         
-        assignCustomActionToFirstFourButtons { note in
+        assignCustomActionToFirstFiveButtons { note in
             switch note {
             case 21: self.delegate2.keyboardPlay()
             case 23: self.delegate2.keyboardStop()
@@ -88,7 +89,7 @@ class Keyboard: UIView {
         }
     }
     
-    private func assignCustomActionToFirstFourButtons(action: @escaping (Int) -> Void) {
+    private func assignCustomActionToFirstFiveButtons(action: @escaping (Int) -> Void) {
         for i in 0..<8 {
             let button = keyboardButtons[i]
             let play = TargetAction {
@@ -146,9 +147,8 @@ class Keyboard: UIView {
         let stop =
         TargetAction {
             if self.conductor.playing {
-                button.backgroundColor = .red
+                button.backgroundColor = btnColor
                 self.conductor.instrument.stop(noteNumber: MIDINoteNumber(number), channel: 0)
-                self.keyboardSheme.click(note: number)
             }
         }
         
@@ -160,21 +160,30 @@ class Keyboard: UIView {
         let play =
         TargetAction {
             self.conductor.playing = true
-            button.backgroundColor = btnColor
+            button.backgroundColor = .red
             try? self.conductor.engine.start()
             self.conductor.instrument.play(noteNumber: MIDINoteNumber(number), velocity: 70, channel: 0)
-            self.keyboardSheme.click(note: number)
-            self.delegate.clickButton(note: number)
             print(">>>> ", number)
         }
+        
+//        let getPlay =
+//        TargetAction {
+//            if self.conductor.playing {
+//                button.backgroundColor = .red
+//                try? self.conductor.engine.start()
+//                self.conductor.instrument.play(noteNumber: MIDINoteNumber(number), velocity: 70, channel: 0)
+//                print(">>>> 11 ", number)
+//            }
+//        }
         
         targetAction.append(play)
         targetAction.append(stop)
         targetAction.append(getWhite)
         
-        button.addTarget(stop, action: #selector(TargetAction.action), for: .touchDown)
+//        button.addTarget(getPlay, action: #selector(TargetAction.action), for: [.touchUpOutside, .touchDragEnter])
+        button.addTarget(play, action: #selector(TargetAction.action), for: .touchDown)
+        button.addTarget(stop, action: #selector(TargetAction.action), for: .touchUpInside)
         button.addTarget(getWhite, action: #selector(TargetAction.action), for: .touchDragExit)
-        button.addTarget(play, action: #selector(TargetAction.action), for: .touchUpInside)
     }
     
     private func getHidden(btn: UIButton, number: Int) {
@@ -206,5 +215,19 @@ extension Keyboard: KeyboardDelegate {
         for button in keyboardButtons {
             button.button.backgroundColor = button.btnColor
         }
+    }
+}
+
+extension Keyboard {
+    func enableTouch() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(startTouching))
+        tapGesture.numberOfTapsRequired = 1
+        tapGesture.numberOfTouchesRequired = 1
+        self.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func startTouching(_ sender: UITapGestureRecognizer) {
+        //        createButtons(button: button, number: number)
+        print("говно")
     }
 }

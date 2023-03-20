@@ -65,15 +65,15 @@ class VisualAssistans: UIView {
     //MARK: Life cycles methods
     override func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else { return }
-        for note in trackRight {
-            let center = getCenter(note: note)
-            let color = rightIsHiden ? setColor(note: note) : UIColor.clear.cgColor
-            drawRect(context: context, center: center, height: CGFloat(note.duration.inTicks.value / 8), color: color)
-        }
         for note in trackLeft {
             let center = getCenter(note: note)
             let color = leftIsHiden ? setColor(note: note) : UIColor.clear.cgColor
-            drawRect(context: context, center: center, height: CGFloat(note.duration.inTicks.value / 8), color: color)
+            drawRect(context: context, center: center, height: CGFloat(note.duration.inTicks.value / 5), color: color)
+        }
+        for note in trackRight {
+            let center = getCenter(note: note)
+            let color = rightIsHiden ? setColor(note: note) : UIColor.clear.cgColor
+            drawRect(context: context, center: center, height: CGFloat(note.duration.inTicks.value / 5), color: color)
         }
     }
     
@@ -117,7 +117,7 @@ class VisualAssistans: UIView {
         
         for note in trackLeft {
             let center = getCenter(note: note)
-            if Int(center.y) + Int(note.duration.inTicks.value / 8) == Int(bounds.height), leftIsHiden {
+            if Int(center.y) + Int(note.duration.inTicks.value / 5) == Int(bounds.height), leftIsHiden {
                 delegate.pressedButton(note: Int(note.note))
             } else if Int(center.y) == Int(bounds.height), leftIsHiden {
                 delegate.releaseButton(note: Int(note.note))
@@ -126,7 +126,7 @@ class VisualAssistans: UIView {
    
         for note in trackRight {
             let center = getCenter(note: note)
-            if Int(center.y) + Int(note.duration.inTicks.value / 8) == Int(bounds.height), rightIsHiden {
+            if Int(center.y) + Int(note.duration.inTicks.value / 5) == Int(bounds.height), rightIsHiden {
                 delegate.pressedButton(note: Int(note.note))
             } else if Int(center.y) == Int(bounds.height), rightIsHiden {
                 delegate.releaseButton(note: Int(note.note))
