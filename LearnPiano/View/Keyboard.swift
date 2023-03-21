@@ -13,10 +13,11 @@ protocol KeyboardDelegate {
     func pressedButton(note: Int)
     func releaseButton(note: Int)
     func resetButtonColor()
+    func soundSwitch()
 }
 
 class Keyboard: UIView {
-    weak var delegate: VisualKeyboardDelegate!
+    weak var delegate: KeyboardControlDelegate!
     var delegate2: KeyboardSoundPlayerDelegate!
     
     //MARK: Public properties
@@ -29,6 +30,7 @@ class Keyboard: UIView {
     private let width = (UIScreen.main.bounds.width - 200) / 51
     private var keyboardSheme = KeyboardSheme.shared
     private var buttons: [Int: UIButton] = [:]
+    private var isSound = false
     
     //MARK: - Initializers
     override init(frame: CGRect) {
@@ -159,10 +161,12 @@ class Keyboard: UIView {
         
         let play =
         TargetAction {
-            self.conductor.playing = true
+            if self.isSound {
+                self.conductor.playing = true
+                try? self.conductor.engine.start()
+                self.conductor.instrument.play(noteNumber: MIDINoteNumber(number), velocity: 70, channel: 0)
+            }
             button.backgroundColor = .red
-            try? self.conductor.engine.start()
-            self.conductor.instrument.play(noteNumber: MIDINoteNumber(number), velocity: 70, channel: 0)
             print(">>>> ", number)
         }
         
@@ -216,6 +220,10 @@ extension Keyboard: KeyboardDelegate {
             button.button.backgroundColor = button.btnColor
         }
     }
+    
+    func soundSwitch() {
+        isSound.toggle()
+    }
 }
 
 extension Keyboard {
@@ -228,6 +236,6 @@ extension Keyboard {
     
     @objc func startTouching(_ sender: UITapGestureRecognizer) {
         //        createButtons(button: button, number: number)
-        print("говно")
+        print("проверка")
     }
 }

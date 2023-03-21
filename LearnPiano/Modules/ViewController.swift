@@ -11,27 +11,24 @@ import SnapKit
 import MobileCoreServices
 import UniformTypeIdentifiers
 
-final class ViewController: UIViewController {
+final class ViewController: UIViewController, UITableViewDelegate {
     //MARK: - Private properties
     private let keyboard = Keyboard()
     private let visualAssistans = VisualAssistans()
     private let soundPlayer = SoundPlayer()
     private let controlPanel = ControlPanel()
+    private let musicList = MusicList()
     private let button = UIButton()
     
     // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupKeyBoard()
+        setupKeyboard()
         setupViewAssistans()
         setupSoundPlayer()
         setupAddButton()
         setupControlPanel()
-        soundPlayer.delegate = visualAssistans
-        keyboard.delegate = visualAssistans
-        visualAssistans.delegate = keyboard
-        keyboard.delegate2 = soundPlayer
-        controlPanel.delegate = visualAssistans
+        setupMusicList()
     }
     
     //MARK: - Action
@@ -40,8 +37,10 @@ final class ViewController: UIViewController {
     }
     
     //MARK: - Private methods
-    private func setupKeyBoard() {
+    private func setupKeyboard() {
         view.addSubview(keyboard)
+        keyboard.delegate = visualAssistans
+        keyboard.delegate2 = soundPlayer
         keyboard.backgroundColor = .lightGray
         keyboard.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
@@ -51,6 +50,7 @@ final class ViewController: UIViewController {
     
     private func setupViewAssistans() {
         view.addSubview(visualAssistans)
+        visualAssistans.delegate = keyboard
         visualAssistans.backgroundColor = .darkGray
         visualAssistans.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
@@ -61,11 +61,23 @@ final class ViewController: UIViewController {
     
     private func setupSoundPlayer() {
         view.addSubview(soundPlayer)
+        soundPlayer.delegate = visualAssistans
         soundPlayer.backgroundColor = .lightGray
         soundPlayer.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(visualAssistans.snp_topMargin)
             make.height.equalTo(120)
+        }
+    }
+    
+    private func setupMusicList() {
+        musicList.dataSource = musicList
+        musicList.register(UITableViewCell.self, forCellReuseIdentifier: "Music")
+        view.addSubview(musicList)
+        musicList.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(controlPanel.snp_bottomMargin)
+            make.bottom.equalTo(button.snp_topMargin)
         }
     }
     
@@ -83,9 +95,12 @@ final class ViewController: UIViewController {
     
     private func setupControlPanel() {
         view.addSubview(controlPanel)
+        controlPanel.keyboardDelegate = keyboard
+        controlPanel.delegate = visualAssistans
         controlPanel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(view.snp_topMargin)
+            make.height.equalTo(100)
         }
     }
 }
@@ -111,7 +126,7 @@ extension ViewController {
 //MARK: - UIDocumentPickerDelegate
 extension ViewController: UIDocumentPickerDelegate {
     private func importFile() {
-        let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [UTType.pdf], asCopy: true)
+        let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [UTType.midi], asCopy: true)
                 documentPicker.delegate = self
                 present(documentPicker, animated: true, completion: nil)
             }
@@ -121,4 +136,3 @@ extension ViewController: UIDocumentPickerDelegate {
         // Handle the selected file here, for example by reading its contents or copying it to the app's file system
     }
 }
-

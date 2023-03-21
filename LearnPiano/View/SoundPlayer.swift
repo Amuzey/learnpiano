@@ -18,7 +18,7 @@ protocol KeyboardSoundPlayerDelegate {
 
 class SoundPlayer: UIView {
     
-    weak var delegate: VisualSoundPlayerDelegate!
+    weak var delegate: SoundPlayerControlDelegate!
     
     //MARK: Public properties
     var targetAction: [TargetAction] = []

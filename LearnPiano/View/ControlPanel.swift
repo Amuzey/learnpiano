@@ -9,7 +9,8 @@ import UIKit
 
 class ControlPanel: UIView {
     
-    weak var delegate: ControlPanelDelegate!
+    weak var delegate: PanelControlDelegate!
+    var keyboardDelegate: KeyboardDelegate!
     
     //MARK: - Public properties
     var targetAction: [TargetAction] = []
@@ -59,7 +60,7 @@ class ControlPanel: UIView {
         
         handStackView.subviews.forEach { button in
             button.snp.makeConstraints { make in
-                make.height.width.equalTo(100)
+                make.height.width.equalTo(80)
             }
         }
         handStackView.snp.makeConstraints { make in
@@ -69,12 +70,13 @@ class ControlPanel: UIView {
     
     private func addActions() {
         let leftHandAction = TargetAction {
-            self.delegate.clickLeftHandButton()
+            self.delegate.didTapLeftHandButton()
         }
         let rightHandAction = TargetAction {
-            self.delegate.clickRightHandButton()
+            self.delegate.didTapRightHandButton()
         }
         let soundAction = TargetAction {
+            self.keyboardDelegate.soundSwitch()
             print("sound")
         }
         targetAction.append(leftHandAction)

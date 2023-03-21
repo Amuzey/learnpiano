@@ -8,7 +8,7 @@
 import UIKit
 import MidiParser
 
-protocol VisualSoundPlayerDelegate: AnyObject {
+protocol SoundPlayerControlDelegate: AnyObject {
     func plusInterval()
     func minusInterval()
     func repeatMidi()
@@ -16,13 +16,13 @@ protocol VisualSoundPlayerDelegate: AnyObject {
     func stopMidi()
 }
 
-protocol VisualKeyboardDelegate: AnyObject {
-    func clickButton(note: Int)
+protocol KeyboardControlDelegate: AnyObject {
+    func didTapKey(note: Int)
 }
 
-protocol ControlPanelDelegate: AnyObject {
-    func clickLeftHandButton()
-    func clickRightHandButton()
+protocol PanelControlDelegate: AnyObject {
+    func didTapLeftHandButton()
+    func didTapRightHandButton()
 }
 
 class VisualAssistans: UIView {
@@ -34,7 +34,7 @@ class VisualAssistans: UIView {
     private let midiLeft = MidiParser(midiName: "leftHand")
     private let midiRight = MidiParser(midiName: "rightHand")
     private var timer: Timer?
-    private var timeInterval =  0.0125
+    private var timeInterval =  0.0185
     private var yOffset: CGFloat = 0
     private var clickedNote: Int?
     private var leftIsHiden = true {
@@ -68,12 +68,12 @@ class VisualAssistans: UIView {
         for note in trackLeft {
             let center = getCenter(note: note)
             let color = leftIsHiden ? setColor(note: note) : UIColor.clear.cgColor
-            drawRect(context: context, center: center, height: CGFloat(note.duration.inTicks.value / 5), color: color)
+            drawRect(context: context, center: center, height: CGFloat(note.duration.inSeconds * 120), color: color)
         }
         for note in trackRight {
             let center = getCenter(note: note)
             let color = rightIsHiden ? setColor(note: note) : UIColor.clear.cgColor
-            drawRect(context: context, center: center, height: CGFloat(note.duration.inTicks.value / 5), color: color)
+            drawRect(context: context, center: center, height: CGFloat(note.duration.inSeconds * 120), color: color)
         }
     }
     
@@ -88,7 +88,7 @@ class VisualAssistans: UIView {
     
     private func getCenter(note: MidiNoteTrack.Element) -> CGPoint {
         let centerX = (keyboardSheme.buttons[Int(note.note) - 21].frame.minX)
-        let centerY = CGFloat(Int(bounds.height - CGFloat(note.timeStamp.inTicks.value) / 5))
+        let centerY = CGFloat(Int(bounds.height - CGFloat(note.timeStamp.inSeconds) * 120) - 100)
         return CGPoint(x: centerX, y: centerY + yOffset)
     }
     
@@ -114,19 +114,21 @@ class VisualAssistans: UIView {
     private func updateCirclesPosition() {
         yOffset += 1
         setNeedsDisplay()
-        
+        pressKeysForMusic()
+    }
+    
+    private func pressKeysForMusic() {
         for note in trackLeft {
             let center = getCenter(note: note)
-            if Int(center.y) + Int(note.duration.inTicks.value / 5) == Int(bounds.height), leftIsHiden {
+            if Int(center.y) + Int(note.duration.inSeconds * 120) == Int(bounds.height), leftIsHiden {
                 delegate.pressedButton(note: Int(note.note))
             } else if Int(center.y) == Int(bounds.height), leftIsHiden {
                 delegate.releaseButton(note: Int(note.note))
             }
         }
-   
         for note in trackRight {
             let center = getCenter(note: note)
-            if Int(center.y) + Int(note.duration.inTicks.value / 5) == Int(bounds.height), rightIsHiden {
+            if Int(center.y) + Int(note.duration.inSeconds * 120) == Int(bounds.height), rightIsHiden {
                 delegate.pressedButton(note: Int(note.note))
             } else if Int(center.y) == Int(bounds.height), rightIsHiden {
                 delegate.releaseButton(note: Int(note.note))
@@ -136,8 +138,8 @@ class VisualAssistans: UIView {
 }
 
 
-//MARK: VisualSoundPlayerDelegate, VisualKeyboardDelegate
-extension VisualAssistans: VisualSoundPlayerDelegate, VisualKeyboardDelegate {
+//MARK: VisualSoundPlayerDelegate, KeyboardControlDelegate
+extension VisualAssistans: SoundPlayerControlDelegate, KeyboardControlDelegate {
     func playMidi() {
         if timer == nil {
             startTimer(timeInterval: timeInterval)
@@ -149,12 +151,12 @@ extension VisualAssistans: VisualSoundPlayerDelegate, VisualKeyboardDelegate {
     }
     
     func plusInterval() {
-        timeInterval -= 0.0010
+        timeInterval -= 0.0015
         stopTimer()
         startTimer(timeInterval: timeInterval)
     }
     func minusInterval() {
-        timeInterval += 0.0010
+        timeInterval += 0.0015
         stopTimer()
         startTimer(timeInterval: timeInterval)
     }
@@ -166,7 +168,7 @@ extension VisualAssistans: VisualSoundPlayerDelegate, VisualKeyboardDelegate {
         setNeedsDisplay()
     }
     
-    func clickButton(note: Int) {
+    func didTapKey(note: Int) {
         if note == clickedNote {
             keyboardSheme.buttons[note].isCorect?.toggle()
             playMidi()
@@ -174,12 +176,12 @@ extension VisualAssistans: VisualSoundPlayerDelegate, VisualKeyboardDelegate {
     }
 }
 
-extension VisualAssistans: ControlPanelDelegate {
-    func clickLeftHandButton() {
+extension VisualAssistans: PanelControlDelegate {
+    func didTapLeftHandButton() {
         leftIsHiden.toggle()
     }
     
-    func clickRightHandButton() {
+    func didTapRightHandButton() {
         rightIsHiden.toggle()
     }
 }
